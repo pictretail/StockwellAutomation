@@ -1,16 +1,16 @@
 
-package at.framework.reportsetup;
+package org.stockwell.reportsetup;
 
 
+import org.stockwell.browser.Factory;
+import org.stockwell.keys.Constants;
+import org.stockwell.keys.FilePath;
+import org.stockwell.tests.TestInfra;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import at.framework.browser.Factory;
-import at.smartshop.keys.Constants;
-import at.smartshop.keys.FilePath;
-import at.smartshop.tests.TestInfra;
 
 public class Listeners implements ITestListener {
 

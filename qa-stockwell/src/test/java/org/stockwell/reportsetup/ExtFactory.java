@@ -1,4 +1,4 @@
-package at.framework.reportsetup;
+package org.stockwell.reportsetup;
 
 import com.aventstack.extentreports.ExtentTest;
 

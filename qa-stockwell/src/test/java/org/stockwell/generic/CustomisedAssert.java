@@ -1,9 +1,9 @@
-package at.framework.generic;
+package org.stockwell.generic;
 
+import org.stockwell.reportsetup.ExtFactory;
+import org.stockwell.tests.TestInfra;
 import org.testng.Assert;
 import com.aventstack.extentreports.Status;
-import at.framework.reportsetup.ExtFactory;
-import at.smartshop.tests.TestInfra;
 public class CustomisedAssert {
 
 

@@ -1,4 +1,4 @@
-package at.framework.ui;
+package org.stockwell.ui;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -40,14 +40,15 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.stockwell.browser.Factory;
+import org.stockwell.generic.DateAndTime;
+import org.stockwell.keys.Constants;
+import org.stockwell.keys.FilePath;
+import org.stockwell.reportsetup.ExtFactory;
+import org.stockwell.tests.TestInfra;
+
 import com.aventstack.extentreports.Status;
 import com.google.common.base.Function;
-import at.framework.browser.Factory;
-import at.framework.generic.DateAndTime;
-import at.framework.reportsetup.ExtFactory;
-import at.smartshop.keys.Constants;
-import at.smartshop.keys.FilePath;
-import at.smartshop.tests.TestInfra;
 
 public class Foundation extends Factory {
 	DateAndTime dateAndTime = new DateAndTime();

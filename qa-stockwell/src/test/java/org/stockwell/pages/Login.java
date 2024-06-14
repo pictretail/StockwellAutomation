@@ -1,11 +1,11 @@
-package at.smartshop.pages;
+package org.stockwell.pages;
 
 import org.openqa.selenium.By;
-import at.framework.browser.Factory;
-import at.framework.ui.Foundation;
-import at.framework.ui.TextBox;
-import at.smartshop.keys.Constants;
-import at.smartshop.tests.TestInfra;
+import org.stockwell.browser.Factory;
+import org.stockwell.keys.Constants;
+import org.stockwell.tests.TestInfra;
+import org.stockwell.ui.Foundation;
+import org.stockwell.ui.TextBox;
 
 public class Login extends Factory {
 		private TextBox textBox = new TextBox();

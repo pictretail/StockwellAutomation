@@ -1,4 +1,4 @@
-package at.smartshop.keys;
+package org.stockwell.keys;
 
 public class FilePath {
 	public FilePath() {

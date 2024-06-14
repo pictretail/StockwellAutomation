@@ -1,4 +1,4 @@
-package at.framework.generic;
+package org.stockwell.generic;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

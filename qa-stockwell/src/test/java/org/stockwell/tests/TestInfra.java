@@ -1,23 +1,23 @@
-package at.smartshop.tests;
+package org.stockwell.tests;
 
 
 
+import org.stockwell.browser.Browser;
+import org.stockwell.browser.Factory;
+import org.stockwell.files.PropertyFile;
+import org.stockwell.keys.Constants;
+import org.stockwell.keys.FilePath;
+import org.stockwell.pages.Login;
+import org.stockwell.reportsetup.ExtFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import com.aventstack.extentreports.Status;
-import at.framework.browser.Browser;
-import at.framework.browser.Factory;
-import at.framework.files.PropertyFile;
-import at.framework.reportsetup.ExtFactory;
-import at.smartshop.keys.Constants;
-import at.smartshop.keys.FilePath;
-import at.smartshop.pages.Login;
 
 
-@Listeners(at.framework.reportsetup.Listeners.class)
+@Listeners(org.stockwell.reportsetup.Listeners.class)
 public class TestInfra {
 	public Browser browser = new Browser();
 	public FilePath filePath = new FilePath();
@@ -56,7 +56,7 @@ public class TestInfra {
 		try {
 			String linesofExc[] = exc.split("\\r?\\n");
 			THROWABLE_EXCEPTION = linesofExc[0];
-			String screenshot = at.framework.reportsetup.Listeners.objReportName.getScreenshot(Factory.getDriver());
+			String screenshot = org.stockwell.reportsetup.Listeners.objReportName.getScreenshot(Factory.getDriver());
 			String sysPath = FilePath.FILE + HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
 			ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(sysPath);
 			ExtFactory.getInstance().getExtent().log(Status.FAIL, "Failed due to " + linesofExc[0]);

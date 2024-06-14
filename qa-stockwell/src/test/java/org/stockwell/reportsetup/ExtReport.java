@@ -1,4 +1,4 @@
-package at.framework.reportsetup;
+package org.stockwell.reportsetup;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +9,13 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.stockwell.generic.DateAndTime;
+import org.stockwell.keys.Constants;
+import org.stockwell.keys.FilePath;
 import org.testng.Assert;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import at.framework.generic.DateAndTime;
-import at.smartshop.keys.Constants;
-import at.smartshop.keys.FilePath;
 
 public class ExtReport {
 

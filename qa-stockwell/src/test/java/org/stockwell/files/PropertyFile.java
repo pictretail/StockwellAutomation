@@ -1,10 +1,11 @@
-package at.framework.files;
+package org.stockwell.files;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
+import org.stockwell.keys.Constants;
 import org.testng.Assert;
-import at.smartshop.keys.Constants;
 public class PropertyFile  {
 
 	public String readPropertyFile(String requiredData, String filePath)  {

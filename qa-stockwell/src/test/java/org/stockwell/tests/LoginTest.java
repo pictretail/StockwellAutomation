@@ -1,12 +1,11 @@
-package at.smartshop.tests;
+package org.stockwell.tests;
 
+import org.stockwell.keys.Configuration;
+import org.stockwell.keys.FilePath;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-//import at.framework.ui.Foundation;
-import at.smartshop.keys.Configuration;
-import at.smartshop.keys.FilePath;
 
-@Listeners(at.framework.reportsetup.Listeners.class)
+@Listeners(org.stockwell.reportsetup.Listeners.class)
 public class LoginTest extends TestInfra {
 	//private Foundation foundation = new Foundation();
 	

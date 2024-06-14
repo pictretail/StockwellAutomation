@@ -1,10 +1,10 @@
-package at.framework.browser;
+package org.stockwell.browser;
 
 
 import org.openqa.selenium.WebDriver;
+import org.stockwell.reportsetup.ExtFactory;
 import org.testng.Assert;
 import com.aventstack.extentreports.Status;
-import at.framework.reportsetup.ExtFactory;
 
 public class Browser extends Factory {
 	

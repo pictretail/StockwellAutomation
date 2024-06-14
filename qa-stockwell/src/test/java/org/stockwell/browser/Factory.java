@@ -1,4 +1,4 @@
-package at.framework.browser;
+package org.stockwell.browser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.stockwell.keys.Constants;
 import org.testng.Assert;
-import at.smartshop.keys.Constants;
 
 
 public class Factory {

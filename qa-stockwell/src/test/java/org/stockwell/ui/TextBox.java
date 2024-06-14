@@ -1,12 +1,13 @@
-package at.framework.ui;
+package org.stockwell.ui;
 
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.stockwell.browser.Factory;
+import org.stockwell.reportsetup.ExtFactory;
+import org.stockwell.tests.TestInfra;
+
 import com.aventstack.extentreports.Status;
-import at.framework.browser.Factory;
-import at.framework.reportsetup.ExtFactory;
-import at.smartshop.tests.TestInfra;
 
 
 public class TextBox extends Factory {

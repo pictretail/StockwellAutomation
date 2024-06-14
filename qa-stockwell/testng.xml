@@ -4,14 +4,14 @@
 	<parameter name="environment" value="staging" />
 	
 <listeners>
-		<listener class-name="at.framework.reportsetup.Listeners"></listener>
+		<listener class-name="org.stockwell.reportsetup.Listeners"></listener>
 </listeners>
 
 	<test name="Test">
 		<parameter name="driver" value="staging" />
 		<parameter name="browser" value="Chrome" />
 		<classes>
-			<class name="at.smartshop.tests.LoginTest" >
+			<class name="org.stockwell.tests.LoginTest" >
 	       
 				 <methods>
 

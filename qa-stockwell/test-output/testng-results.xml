@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-06-14T17:25:39 IST" name="Suite" finished-at="2024-06-14T17:25:50 IST" duration-ms="11021">
+  <suite started-at="2024-06-14T17:58:55 IST" name="Suite" finished-at="2024-06-14T17:59:08 IST" duration-ms="12912">
     <groups>
     </groups>
-    <test started-at="2024-06-14T17:25:39 IST" name="Test" finished-at="2024-06-14T17:25:50 IST" duration-ms="11021">
-      <class name="at.smartshop.tests.LoginTest">
-        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:at.smartshop.tests.LoginTest@52b1beb6]" started-at="2024-06-14T17:25:39 IST" name="beforeMethod" finished-at="2024-06-14T17:25:42 IST" duration-ms="2745" status="PASS">
+    <test started-at="2024-06-14T17:58:55 IST" name="Test" finished-at="2024-06-14T17:59:08 IST" duration-ms="12912">
+      <class name="org.stockwell.tests.LoginTest">
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:org.stockwell.tests.LoginTest@52b1beb6]" started-at="2024-06-14T17:58:55 IST" name="beforeMethod" finished-at="2024-06-14T17:58:59 IST" duration-ms="3604" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,15 +23,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="verifyLoginPageAsSuperUser()[pri:0, instance:at.smartshop.tests.LoginTest@52b1beb6]" started-at="2024-06-14T17:25:42 IST" name="verifyLoginPageAsSuperUser" finished-at="2024-06-14T17:25:50 IST" duration-ms="8012" status="PASS">
+        <test-method signature="verifyLoginPageAsSuperUser()[pri:0, instance:org.stockwell.tests.LoginTest@52b1beb6]" started-at="2024-06-14T17:58:59 IST" name="verifyLoginPageAsSuperUser" finished-at="2024-06-14T17:59:08 IST" duration-ms="9046" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginPageAsSuperUser -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:at.smartshop.tests.LoginTest@52b1beb6]" started-at="2024-06-14T17:25:50 IST" name="afterMethod" finished-at="2024-06-14T17:25:50 IST" duration-ms="216" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:org.stockwell.tests.LoginTest@52b1beb6]" started-at="2024-06-14T17:59:08 IST" name="afterMethod" finished-at="2024-06-14T17:59:08 IST" duration-ms="213" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-      </class> <!-- at.smartshop.tests.LoginTest -->
+      </class> <!-- org.stockwell.tests.LoginTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
