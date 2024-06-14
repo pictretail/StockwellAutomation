@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="methods" thread-count="1">
+	<parameter name="environment" value="staging" />
+	
+<listeners>
+		<listener class-name="at.framework.reportsetup.Listeners"></listener>
+</listeners>
+
+	<test name="Test">
+		<parameter name="driver" value="staging" />
+		<parameter name="browser" value="Chrome" />
+		<classes>
+			<class name="at.smartshop.tests.LoginTest" >
+	       
+				 <methods>
+
+					<include name="verifyLoginPageAsSuperUser" />
+
+    			 </methods>
+		    
+			</class>
+		</classes>
+	</test> <!-- Test -->
+
+
+</suite> <!-- Suite -->
