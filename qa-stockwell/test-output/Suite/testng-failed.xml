@@ -3,19 +3,19 @@
 <suite thread-count="1" parallel="methods" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <parameter name="environment" value="staging"/>
   <listeners>
-    <listener class-name="at.framework.reportsetup.Listeners"/>
+    <listener class-name="org.stockwell.reportsetup.Listeners"/>
   </listeners>
   <test thread-count="1" parallel="methods" name="Test(failed)">
     <parameter name="driver" value="staging"/>
     <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="at.smartshop.tests.LoginTest">
+      <class name="org.stockwell.tests.LoginTest">
         <methods>
-          <include name="verifyLoginPageAsSuperUser"/>
           <include name="afterMethod"/>
+          <include name="verifyLoginPageAsSuperUser"/>
           <include name="beforeMethod"/>
         </methods>
-      </class> <!-- at.smartshop.tests.LoginTest -->
+      </class> <!-- org.stockwell.tests.LoginTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

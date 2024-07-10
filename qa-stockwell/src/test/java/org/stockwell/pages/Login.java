@@ -16,7 +16,8 @@ public class Login extends Factory {
 		public static final By TXT_EMAIL = By.xpath("//input[@type='text']");
 		public static final By TXT_PASSWORD = By.xpath("//input[@type='password']");
 		public static final By BTN_SIGN_IN = By.xpath("//span[text()='Sign In']");
-		
+		public static final By BTN_HAMBURGER = By.xpath("//button[@aria-label='Side Nav']");
+		public static final By STOCKWELL_HOME = By.xpath("//span[text()='Stockwell']");
 		
 		public void login(String userName, String password) {
 			try {

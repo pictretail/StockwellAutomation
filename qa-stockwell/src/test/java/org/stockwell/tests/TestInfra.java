@@ -59,7 +59,7 @@ public class TestInfra {
 			String screenshot = org.stockwell.reportsetup.Listeners.objReportName.getScreenshot(Factory.getDriver());
 			String sysPath = FilePath.FILE + HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
 			ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(sysPath);
-			ExtFactory.getInstance().getExtent().log(Status.FAIL, "Failed due to " + linesofExc[0]);
+			ExtFactory.getInstance().getExtent().log(Status.FAIL, "Failed due to ");
 			Assert.fail(exc);
 		} catch (Exception e) {
 			Assert.fail("Failed due to " + exc.toString() + " could not capture the screenshot due to " + e);

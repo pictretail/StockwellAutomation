@@ -15,11 +15,11 @@ import com.aventstack.extentreports.Status;
 public class Listeners implements ITestListener {
 
 	static ExtentReports objReport;
-	public static ExtReport objReportName;
+	public static ExtReport objReportName = new ExtReport("Stockwell Test Automation","Stockwell Test Result");;
 	ExtentTest test;
 	
 	public void onTestFailure(ITestResult result) {
-
+		
 		// get screenshot
 		try {
 			String screenshot = null;

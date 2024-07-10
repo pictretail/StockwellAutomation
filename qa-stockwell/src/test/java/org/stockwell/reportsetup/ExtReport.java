@@ -80,7 +80,7 @@ public class ExtReport {
 	}
 
 	private String createReportSubFolder() {
-		presentSubFolderName = presentRootFolderPath + "\\"
+		presentSubFolderName = presentRootFolderPath + "//"
 				+ objDate.getDateAndTime(Constants.REGEX_HHMMSS, Constants.TIME_ZONE_INDIA);
 		try {
 			Files.createDirectories(Paths.get(presentSubFolderName));
@@ -96,7 +96,7 @@ public class ExtReport {
 		try {
 			TakesScreenshot ts = (TakesScreenshot) driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
-			destinationFile = getPresentRootFolderPath() + "\\" + timeStamp + ".png";
+			destinationFile = getPresentRootFolderPath() + "//" + timeStamp + ".png";
 			FileUtils.copyFile(source, new File(destinationFile));
 		} catch (Exception exc) {
 			Assert.fail(exc.toString());
