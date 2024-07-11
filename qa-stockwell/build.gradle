@@ -8,19 +8,20 @@
 
 plugins {
     // Apply the java-library plugin for API and implementation separation.
-    id 'java-library'
+    id 'java'
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
-    //mavenCentral()
-    jcenter()
+    mavenCentral()
+    //jcenter()
 }
 
 test {
     useTestNG() {
         //dependsOn cleanTest
         useDefaultListeners = true
+		suites 'src/test/resources'
     }
 }
 dependencies {
@@ -73,7 +74,7 @@ implementation 'org.seleniumhq.selenium:selenium-java:4.11.0'
 	
 }
 
-tasks.named('test') {
-    // Use TestNG 
-    useTestNG()
-}
+// tasks.named('test') {
+//     // Use TestNG 
+//     useTestNG()
+// }
