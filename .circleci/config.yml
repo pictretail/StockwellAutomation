@@ -3,57 +3,25 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ubuntu:latest
-    
+      - image: docker:stable
+
     steps:
       - checkout
-          
 
-      # Install wget and unzip (if not already installed in base image)
+      # Install Docker client inside the CircleCI Docker executor
+      - setup_remote_docker
+      
+      # Build the Docker image using Dockerfile
       - run:
-          name: Install wget and unzip
+          name: Build Docker Image
           command: |
-            apt-get update && apt-get install -y wget unzip
+            docker build -t my-docker-image .
 
-      # Install Java using apt-get non-interactively
+      # Optionally, you can run tests or other commands inside the Docker container
       - run:
-          name: Install Java
+          name: Run Tests inside Docker Container
           command: |
-            export DEBIAN_FRONTEND=noninteractive
-            apt-get install -y openjdk-17-jdk
-            java -version  # Verify Java installation
-
-      # Install Gradle using wget
-      - run:
-          name: Install Gradle
-          command: |
-            wget -q --show-progress --progress=bar:force:noscroll -O /tmp/gradle-7.5.1-bin.zip https://services.gradle.org/distributions/gradle-7.5.1-bin.zip
-            unzip -d /opt/gradle /tmp/gradle-7.5.1-bin.zip
-            export PATH=$PATH:/opt/gradle/gradle-7.5.1/bin
-
-     
-     # Ensure Gradle Wrapper is present and executable
-      - run:
-          name: Initialize Gradle Wrapper
-          command: |
-            pwd
-            ls -l
-            cd /root/project/qa-stockwell
-            chmod +x gradlew
-            ./gradlew wrapper --gradle-version 7.5.1
-            
-            
-      # Run Gradle tasks for project build and test
-      - run:
-           name: Run Gradle Tasks
-           command: |
-            pwd
-            ls -l
-            cd /root/project/qa-stockwell
-            chmod +x gradlew
-            ./gradlew --refresh-dependencies clean build --info
-            ./gradlew build --warning-mode all
-            ./gradlew test -Dtestng.outputDir=/test-output -Dtestng.xmlpath=testng.xml
+            docker run my-docker-image npm test  # Example command to run tests
 
 workflows:
   version: 2
