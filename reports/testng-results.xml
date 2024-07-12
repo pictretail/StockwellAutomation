@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-07-12T08:24:29 UTC" name="Suite" finished-at="2024-07-12T08:25:00 UTC" duration-ms="30795">
+    <groups>
+    </groups>
+    <test started-at="2024-07-12T08:24:29 UTC" name="Test" finished-at="2024-07-12T08:25:00 UTC" duration-ms="30795">
+      <class name="org.stockwell.tests.LoginTest">
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:org.stockwell.tests.LoginTest@33065d67]" started-at="2024-07-12T08:24:29 UTC" name="beforeMethod" finished-at="2024-07-12T08:24:55 UTC" duration-ms="25938" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[staging]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="verifyLoginPageAsSuperUser()[pri:0, instance:org.stockwell.tests.LoginTest@33065d67]" started-at="2024-07-12T08:24:55 UTC" name="verifyLoginPageAsSuperUser" finished-at="2024-07-12T08:25:00 UTC" duration-ms="4680" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginPageAsSuperUser -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:org.stockwell.tests.LoginTest@33065d67]" started-at="2024-07-12T08:25:00 UTC" name="afterMethod" finished-at="2024-07-12T08:25:00 UTC" duration-ms="121" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- org.stockwell.tests.LoginTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Run Tests inside Docker Container
           command: |
-            docker run -v /root/project/reports:/home/seluser/stockwellautomation/qa-stockwell/test-output automationimage  # Example command to run tests
+            docker run -v /root/project/reports:docker run -v $(pwd)/reports:/home/seluser/stockwellautomation/qa-stockwell/test-output automationimage  # Example command to run tests
 
       # Store test report files as artifacts
       - store_artifacts:
