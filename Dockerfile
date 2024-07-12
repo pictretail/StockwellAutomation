@@ -49,3 +49,4 @@ RUN chmod -R +r /home/seluser/stockwellautomation/qa-stockwell
 
 # Run the Selenium scripts using gradle
 CMD ["sh", "-c", "gradle clean build --refresh-dependencies"]
+

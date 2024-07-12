@@ -14,14 +14,15 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    //jcenter()
+    //jcenter()-
 }
 
 test {
     useTestNG() {
         //dependsOn cleanTest
+		outputDirectory = file("test-output")
         useDefaultListeners = true
-		suites 'src/test/resources'
+		suites 'src/test/resources/testng.xml'
     }
 }
 dependencies {
