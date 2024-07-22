@@ -155,10 +155,11 @@ public class Listeners implements ITestListener {
 	}
  
 	public void onFinish(ITestContext context) {
-		for (Map<String, Integer> map : listResultSet) {
-			if (!map.isEmpty())
-				listResultSetFinal.add(map);
-		}
+		// for (Map<String, Integer> map : listResultSet) {
+		// 	if (!map.isEmpty())
+		// 		listResultSetFinal.add(map);
+		// }
+		System.out.println("Flusing report");
 		objReport.flush();
 	}
  

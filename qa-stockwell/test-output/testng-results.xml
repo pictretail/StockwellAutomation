@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-07-22T16:50:09 IST" name="Suite" finished-at="2024-07-22T16:50:21 IST" duration-ms="11497">
+    <groups>
+    </groups>
+    <test started-at="2024-07-22T16:50:09 IST" name="Test" finished-at="2024-07-22T16:50:21 IST" duration-ms="11497">
+      <class name="org.stockwell.tests.LoginTest">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:org.stockwell.tests.LoginTest@449a4f23]" started-at="2024-07-22T16:50:09 IST" name="beforeClass" finished-at="2024-07-22T16:50:09 IST" duration-ms="9" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:org.stockwell.tests.LoginTest@449a4f23]" started-at="2024-07-22T16:50:09 IST" name="beforeMethod" finished-at="2024-07-22T16:50:12 IST" duration-ms="2510" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[staging]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="verifyLoginPageAsSuperUser()[pri:0, instance:org.stockwell.tests.LoginTest@449a4f23]" started-at="2024-07-22T16:50:12 IST" name="verifyLoginPageAsSuperUser" finished-at="2024-07-22T16:50:20 IST" duration-ms="8335" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginPageAsSuperUser -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:org.stockwell.tests.LoginTest@449a4f23]" started-at="2024-07-22T16:50:20 IST" name="afterMethod" finished-at="2024-07-22T16:50:21 IST" duration-ms="153" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:org.stockwell.tests.LoginTest@449a4f23]" started-at="2024-07-22T16:50:21 IST" name="afterClass" finished-at="2024-07-22T16:50:21 IST" duration-ms="7" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+      </class> <!-- org.stockwell.tests.LoginTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

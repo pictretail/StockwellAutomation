@@ -45,8 +45,13 @@ COPY . /home/seluser/stockwellautomation
 WORKDIR /home/seluser/stockwellautomation/qa-stockwell
 
 # Set read permissions recursively for the entire project
-RUN chmod -R +r /home/seluser/stockwellautomation/qa-stockwell
+RUN sudo chmod -R +r /home/seluser/stockwellautomation/qa-stockwell
+RUN ls -lR /home/seluser/stockwellautomation/qa-stockwell
+
+# Make gradlew executable
+RUN chmod +x ./gradlew
 
 # Run the Selenium scripts using gradle
-CMD ["sh", "-c", "gradle clean build --refresh-dependencies"]
-
+#CMD ["sh", "-c", "gradle clean build --refresh-dependencies"]
+#CMD ["sh", "-c", "gradle test"]
+CMD ["./gradlew", "clean", "test", "--info"]
