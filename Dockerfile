@@ -53,5 +53,5 @@ RUN chmod +x ./gradlew
 
 # Run the Selenium scripts using gradle
 #CMD ["sh", "-c", "gradle clean build --refresh-dependencies"]
-#CMD ["sh", "-c", "gradle test"]
-CMD ["./gradlew", "clean", "test", "--info"]
+CMD ["sh", "-c", "gradle test"]
+#CMD ["./gradlew", "clean", "test", "--info"]
