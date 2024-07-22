@@ -16,7 +16,7 @@ public class LoginTest extends TestInfra {
 	public void verifyLoginPageAsSuperUser() {
 		
 		try {
-			// Launch the browser & Signin 
+			//Valid login verification
 			browser.navigateURL(
 					propertyFile.readPropertyFile(Configuration.CURRENT_URL, FilePath.PROPERTY_CONFIG_FILE));
 			login.login(
