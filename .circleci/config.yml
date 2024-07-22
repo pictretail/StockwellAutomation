@@ -25,7 +25,7 @@ jobs:
 
       # Store test report files as artifacts
       - store_artifacts:
-          path: /root/project/reports
+          path: /root/project/TestReports
           destination: test-reports
 
 
