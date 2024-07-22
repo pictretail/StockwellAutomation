@@ -22,11 +22,8 @@ public class LoginTest extends TestInfra {
 			login.login(
 					propertyFile.readPropertyFile(Configuration.SUPER_USER, FilePath.PROPERTY_CONFIG_FILE),
 					propertyFile.readPropertyFile(Configuration.PASSWORD, FilePath.PROPERTY_CONFIG_FILE));
-			//foundation.waitforElement(Login.BTN_HAMBURGER, 5);
-			//CustomisedAssert.assertTrue(foundation.isDisplayed(Login.BTN_HAMBURGER));
-			
-			
-			
+			foundation.waitforElement(Login.BTN_HAMBURGER, 5);
+			CustomisedAssert.assertTrue(foundation.isDisplayed(Login.BTN_HAMBURGER));
 
 		} catch (Exception exc) {
 			TestInfra.failWithScreenShot(exc.toString());

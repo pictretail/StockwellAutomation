@@ -1,59 +1,24 @@
 package org.stockwell.ui;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.net.ssl.HttpsURLConnection;
-//import org.apache.pdfbox.Loader;
-//import org.apache.pdfbox.pdmodel.PDDocument;
-//import org.apache.pdfbox.text.PDFTextStripper;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.stockwell.browser.Factory;
 import org.stockwell.generic.DateAndTime;
-import org.stockwell.keys.Constants;
-import org.stockwell.keys.FilePath;
 import org.stockwell.reportsetup.ExtFactory;
 import org.stockwell.tests.TestInfra;
-
 import com.aventstack.extentreports.Status;
-import com.google.common.base.Function;
+
 
 public class Foundation extends Factory {
 	DateAndTime dateAndTime = new DateAndTime();
-	public String parent;
-
+	
 	public boolean isDisplayed(By object) {
 		boolean isElementDisplayed = false;
 		try {
@@ -97,20 +62,6 @@ public class Foundation extends Factory {
 		}
 	}
 
-	public void fluentWait(String object, int waitTime) {
-		try {
-			FluentWait<WebDriver> wait = new FluentWait<>(getDriver()).withTimeout(Duration.ofSeconds(waitTime))
-					.pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
-
-			wait.until(new Function<WebDriver, WebElement>() {
-				public WebElement apply(WebDriver getDriver) {
-					return getDriver.findElement(By.id(object));
-				}
-			});
-		} catch (Exception exc) {
-			TestInfra.failWithScreenShot(exc.toString());
-		}
-	}
 
 	public WebElement waitforElement(By object, int waitTime) {
 		WebElement element = null;

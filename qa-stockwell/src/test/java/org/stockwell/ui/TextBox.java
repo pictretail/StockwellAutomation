@@ -1,17 +1,15 @@
 package org.stockwell.ui;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.stockwell.browser.Factory;
 import org.stockwell.reportsetup.ExtFactory;
 import org.stockwell.tests.TestInfra;
-
 import com.aventstack.extentreports.Status;
 
 
 public class TextBox extends Factory {
-	private Foundation foundation = new Foundation();
+	//private Foundation foundation = new Foundation();
 
 	public void enterText(By object, String text) {
 		try {

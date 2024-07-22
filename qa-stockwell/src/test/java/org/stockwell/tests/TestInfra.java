@@ -2,15 +2,19 @@ package org.stockwell.tests;
 
 
 
+import java.util.concurrent.TimeUnit;
+
 import org.stockwell.browser.Browser;
 import org.stockwell.browser.Factory;
-import org.stockwell.files.PropertyFile;
 import org.stockwell.keys.Constants;
 import org.stockwell.keys.FilePath;
 import org.stockwell.pages.Login;
 import org.stockwell.reportsetup.ExtFactory;
+import org.stockwell.utilities.PropertyFile;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -26,10 +30,21 @@ public class TestInfra {
 	public static String HOST = "";
 	public static String THROWABLE_EXCEPTION = "";
 	public static boolean THROWED_EXCEPTION = false;
-
+	public long startTimeMilli;
+	public long startTimeSeconds;
 	public static String updateTestRail = "";
 
-
+	@BeforeClass(alwaysRun = true)
+    public void beforeClass() {
+        startTimeMilli = System.currentTimeMillis();
+        startTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(startTimeMilli);
+    }
+ 
+    @AfterClass(alwaysRun = true)
+    public void afterClass() {
+        System.err.println("Duration: " + this.getClass().getName()
+                + " - "+(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) - startTimeSeconds));
+    }
 
 	@Parameters({ "driver", "browser" })
 	@BeforeMethod
@@ -50,19 +65,30 @@ public class TestInfra {
 		}
 	}
 
-
-
 	public static void failWithScreenShot(String exc) {
 		try {
 			String linesofExc[] = exc.split("\\r?\\n");
 			THROWABLE_EXCEPTION = linesofExc[0];
 			String screenshot = org.stockwell.reportsetup.Listeners.objReportName.getScreenshot(Factory.getDriver());
-			String sysPath = FilePath.FILE + HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
-			ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(sysPath);
-			ExtFactory.getInstance().getExtent().log(Status.FAIL, "Failed due to ");
+			//String sysPath = FilePath.FILE + HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
+			//String sysPath = FilePath.FILE + HOST + screenshot;
+			ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
+			ExtFactory.getInstance().getExtent().log(Status.FAIL, "Failed due to "+THROWABLE_EXCEPTION);
 			Assert.fail(exc);
 		} catch (Exception e) {
 			Assert.fail("Failed due to " + exc.toString() + " could not capture the screenshot due to " + e);
 		}
 	}
+
+	public static void capturePassedScreenshot() {
+		try {
+			String screenshot = org.stockwell.reportsetup.Listeners.objReportName.getScreenshot(Factory.getDriver());
+			//String sysPath = FilePath.FILE + HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
+			//ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(sysPath);
+			ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
+		} catch (AssertionError exc) {
+			TestInfra.failWithScreenShot(exc.toString());
+		}
+	}
+
 }

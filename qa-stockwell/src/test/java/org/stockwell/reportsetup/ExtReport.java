@@ -16,6 +16,7 @@ import org.testng.Assert;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtReport {
 
@@ -55,30 +56,11 @@ public class ExtReport {
 
 	}
 
-	public ExtentReports getReporter() {
-		try {
-			reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
-			objSparkReporter = new ExtentSparkReporter(reportFullPath);
-			objSparkReporter.config().setReportName(this.reportMainTitleName);
-			objSparkReporter.config().setDocumentTitle(this.reportBrowserTitleName);
-			objExtentReport = new ExtentReports();
-			objExtentReport.attachReporter(objSparkReporter);
-		} catch (Exception exc) {
-			exc.printStackTrace();
-			Assert.fail(exc.toString());
-		}
-
-		return objExtentReport;
-	}
-
 	public String getPresentRootFolderPath() {
 		return presentRootFolderPath;
 	}
 
-	public String getPresentSubFolderPath() {
-		return presentSubFolderName;
-	}
-
+	
 	private String createReportSubFolder() {
 		presentSubFolderName = presentRootFolderPath + "//"
 				+ objDate.getDateAndTime(Constants.REGEX_HHMMSS, Constants.TIME_ZONE_INDIA);
@@ -90,17 +72,39 @@ public class ExtReport {
 		return presentSubFolderName;
 	}
 
+
+	public String getPresentSubFolderPath() {
+		return presentSubFolderName;
+	}
+
 	public String getScreenshot(WebDriver driver) {
 		String timeStamp = objDate.getDateAndTime(Constants.TIME_STAMP, Constants.TIME_ZONE_INDIA);
 		String destinationFile = null;
 		try {
 			TakesScreenshot ts = (TakesScreenshot) driver;
 			File source = ts.getScreenshotAs(OutputType.FILE);
-			destinationFile = getPresentRootFolderPath() + "//" + timeStamp + ".png";
+			destinationFile = getPresentRootFolderPath() + "/" + timeStamp + ".png";
 			FileUtils.copyFile(source, new File(destinationFile));
 		} catch (Exception exc) {
 			Assert.fail(exc.toString());
 		}
 		return destinationFile;
+	}
+
+	public ExtentReports getReporter() {
+		try {
+			reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
+			objSparkReporter = new ExtentSparkReporter(reportFullPath);
+			objSparkReporter.config().setTheme(Theme.DARK);
+			objSparkReporter.config().setReportName(this.reportMainTitleName);
+			objSparkReporter.config().setDocumentTitle(this.reportBrowserTitleName);
+			objExtentReport = new ExtentReports();
+			objExtentReport.attachReporter(objSparkReporter);
+		} catch (Exception exc) {
+			exc.printStackTrace();
+			Assert.fail(exc.toString());
+		}
+
+		return objExtentReport;
 	}
 }

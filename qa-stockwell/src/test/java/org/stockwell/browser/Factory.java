@@ -1,12 +1,12 @@
 package org.stockwell.browser;
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
+//import org.openqa.selenium.remote.DesiredCapabilities;
 import org.stockwell.keys.Constants;
 import org.testng.Assert;
 
@@ -17,7 +17,7 @@ public class Factory {
 
 	public void setDriver(String drivers,String browser) {
 		try {
-			DesiredCapabilities capabilities = null;
+			//DesiredCapabilities capabilities = null;
 				if (browser.equals(Constants.CHROME)) {
 					// capabilities = new DesiredCapabilities();
 					// ChromeOptions chromeOptions = new ChromeOptions();

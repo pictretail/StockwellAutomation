@@ -9,20 +9,18 @@ public class ExtFactory {
 
 	private static ExtFactory instance = new ExtFactory();
 
-	public static ExtFactory getInstance() {
-		return instance;
-	}
-
 	ThreadLocal<ExtentTest> extent = new ThreadLocal<>();
 
-	public ExtentTest getExtent() {
-		return extent.get();
-	}
-
+	
 	public void setExtent(ExtentTest extentTestObject) {
 		extent.set(extentTestObject);
 	}
-
+	public ExtentTest getExtent() {
+		return extent.get();
+	}
+	public static ExtFactory getInstance() {
+		return instance;
+	}
 	public void removeExtentObject() {
 		extent.remove();
 	}

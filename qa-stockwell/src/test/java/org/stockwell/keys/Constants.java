@@ -13,7 +13,7 @@ public class Constants {
 		public static final String REGEX_DDMMYYYY = "DDMMYYYY";
 		public static final String REGEX_HHMMSS = "HHmmss";
 		public static final String REPORT_NAME = "//Results.html";
-		public static final String REPORTS = "//Reports//";
+		public static final String REPORTS = "//TestReports//";
 		public static final String PASS = "Pass";
 		public static final String FAIL = "Fail";
 		public static final String SKIP = "Skip";

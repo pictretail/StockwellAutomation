@@ -24,7 +24,6 @@ public class Login extends Factory {
 				
 				foundation.waitforElement(TXT_EMAIL, Constants.THREE_SECOND);
 				textBox.enterText(TXT_EMAIL, userName);
-				//foundation.click(BTN_SIGN_IN);
 				foundation.waitforElement(TXT_PASSWORD, Constants.THREE_SECOND);
 				textBox.enterText(TXT_PASSWORD, password);
 				foundation.click(BTN_SIGN_IN);
