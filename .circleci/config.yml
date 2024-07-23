@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Run Tests inside Docker Container
           command: |
-            sudo chmod -R +rw /root/project/qa-stockwell
+            chmod -R +rw /root/project/qa-stockwell
             docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage  # Example command to run tests
            # find . -type f -regex ".*/TestReports" -exec cp {} ~/test-reports \;
 
