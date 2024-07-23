@@ -159,8 +159,7 @@ public class Listeners implements ITestListener {
 		// 	if (!map.isEmpty())
 		// 		listResultSetFinal.add(map);
 		// }
-		System.out.println("Flusing report");
-		objReport.flush();
+		//objReport.flush();
 	}
  
 	public void initializeMap(Map<String, Integer> map) {
