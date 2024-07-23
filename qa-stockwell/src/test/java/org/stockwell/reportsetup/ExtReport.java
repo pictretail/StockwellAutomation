@@ -93,8 +93,13 @@ public class ExtReport {
 
 	public ExtentReports getReporter() {
 		try {
+			String timeStamp = objDate.getDateAndTime(Constants.TIME_STAMP, Constants.TIME_ZONE_INDIA);
+		
 			//reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
-			reportFullPath = getPresentRootFolderPath() + Constants.REPORT_NAME;
+			System.out.println("getPresentRootFolderPath()"+getPresentRootFolderPath());
+			System.out.println("createReportSubFolder()"+createReportSubFolder());
+			reportFullPath = rootFolder + "/" + timeStamp +  Constants.REPORT_NAME;
+			System.out.println("reportFullPath"+reportFullPath);
 			objSparkReporter = new ExtentSparkReporter(reportFullPath);
 			objSparkReporter.config().setTheme(Theme.DARK);
 			objSparkReporter.config().setReportName(this.reportMainTitleName);

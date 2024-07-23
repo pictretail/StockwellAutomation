@@ -159,7 +159,7 @@ public class Listeners implements ITestListener {
 		// 	if (!map.isEmpty())
 		// 		listResultSetFinal.add(map);
 		// }
-		//objReport.flush();
+		objReport.flush();
 	}
  
 	public void initializeMap(Map<String, Integer> map) {
