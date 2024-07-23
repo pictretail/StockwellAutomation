@@ -31,12 +31,18 @@ jobs:
           path: /root/project/reports
           destination: test-reports
 
+      # List all files in the /root/project/reports folder
+      - run:
+          name: List Files in /root/project/reports Folder
+          command: |
+            ls -al /root/project/reports
+            
 # Flush (delete) reports from artifacts
       - run:
           name: Flush Reports from Artifacts
           command: |
             rm -rf /root/project/reports/*
-            
+
 workflows:
   version: 2
   build:
