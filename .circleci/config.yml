@@ -17,12 +17,6 @@ jobs:
           command: |
             docker build -t automationimage .
 
-    # Flush (delete) reports from artifacts
-      - run:
-          name: Flush Reports from Artifacts
-          command: |
-            rm -rf /root/project/reports/*
-            
       # Optionally, you can run tests or other commands inside the Docker container
       - run:
           name: Run Tests inside Docker Container
@@ -37,7 +31,12 @@ jobs:
           path: /root/project/reports
           destination: test-reports
 
-
+# Flush (delete) reports from artifacts
+      - run:
+          name: Flush Reports from Artifacts
+          command: |
+            rm -rf /root/project/reports/*
+            
 workflows:
   version: 2
   build:

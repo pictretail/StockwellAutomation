@@ -93,7 +93,8 @@ public class ExtReport {
 
 	public ExtentReports getReporter() {
 		try {
-			reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
+			//reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
+			reportFullPath = getPresentRootFolderPath() + Constants.REPORT_NAME;
 			objSparkReporter = new ExtentSparkReporter(reportFullPath);
 			objSparkReporter.config().setTheme(Theme.DARK);
 			objSparkReporter.config().setReportName(this.reportMainTitleName);
