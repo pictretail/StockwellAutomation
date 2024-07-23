@@ -35,8 +35,9 @@ jobs:
       - run:
           name: List Files in /root/project/reports Folder
           command: |
-            ls -al /root/project/reports
-            
+            pwd
+            ls -al 
+
 # Flush (delete) reports from artifacts
       - run:
           name: Flush Reports from Artifacts
