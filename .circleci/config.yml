@@ -18,11 +18,11 @@ jobs:
           command: |
             docker build -t automationimage .
 
-      # Flush (delete) reports from artifacts
-      - run:
-          name: Flush Reports from Artifacts
-          command: |
-            rm -rf /root/project/qa-stockwell/TestReports/*
+      # # Flush (delete) reports from artifacts
+      # - run:
+      #     name: Flush Reports from Artifacts
+      #     command: |
+      #       rm -rf /root/project/qa-stockwell/TestReports/*
 
 
       # Optionally, you can run tests or other commands inside the Docker container
