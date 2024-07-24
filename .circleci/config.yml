@@ -36,11 +36,8 @@ jobs:
           command: |
             chmod -R +rw /root/project/qa-stockwell/TestReports
             docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
-         
-      - run:
-          name: Verify Test Report Files and Permissions
-          command: |
             ls -al /home/seluser/stockwellautomation/qa-stockwell/TestReports
+            ls -al /root/project/qa-stockwell/TestReports
    
     # docker volume create test_reports_volume
     # docker run -v test_reports_volume:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
