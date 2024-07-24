@@ -97,6 +97,7 @@ public class ExtReport {
 		
 			//reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
 			reportFullPath = rootFolder + timeStamp +  Constants.REPORT_NAME;
+			System.out.println();
 			System.out.println("reportFullPath"+reportFullPath);
 			objSparkReporter = new ExtentSparkReporter(reportFullPath);
 			objSparkReporter.config().setTheme(Theme.DARK);
