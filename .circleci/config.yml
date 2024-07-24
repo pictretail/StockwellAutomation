@@ -18,19 +18,19 @@ jobs:
           command: |
             docker build -t automationimage .
 
-      # Flush (delete) reports from artifacts
-      - run:
-          name: Flush Reports from Artifacts
-          command: |
-            rm -rf /root/project/qa-stockwell/TestReports/*
-            ls -al /root/project/qa-stockwell/TestReports
+      # # Flush (delete) reports from artifacts
+      # - run:
+      #     name: Flush Reports from Artifacts
+      #     command: |
+      #       rm -rf /root/project/qa-stockwell/TestReports/*
+      #       ls -al /root/project/qa-stockwell/TestReports
 
 
       # Optionally, you can run tests or other commands inside the Docker container
       - run:
           name: Run Tests inside Docker Container
           command: |
-            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage  # Example command to run tests
+            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
          
     # docker volume create test_reports_volume
     # docker run -v test_reports_volume:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
@@ -42,7 +42,7 @@ jobs:
       # Store test report files as artifacts
       - store_artifacts:
           #path: ~/test-reports
-          path: test_reports_volume
+          path: /root/project/qa-stockwell/TestReports
           destination: test-reports
 
       # List all files in the /root/project/reports folder
