@@ -47,6 +47,7 @@ WORKDIR /home/seluser/stockwellautomation/qa-stockwell
 # Set read permissions recursively for the entire project
 RUN sudo chmod -R +rw /home/seluser/stockwellautomation/qa-stockwell
 
+
 # Make gradlew executable
 #RUN chmod +x ./gradlew
 

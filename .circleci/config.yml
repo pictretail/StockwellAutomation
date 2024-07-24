@@ -34,10 +34,14 @@ jobs:
       - run:
           name: Run Tests inside Docker Container
           command: |
-            chmod a+w /root/project/qa-stockwell/TestReports
+            chmod -R +rw /root/project/qa-stockwell/TestReports
             docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
          
-    # docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage       
+      - run:
+          name: Verify Test Report Files and Permissions
+          command: |
+            ls -al /home/seluser/stockwellautomation/qa-stockwell/TestReports
+   
     # docker volume create test_reports_volume
     # docker run -v test_reports_volume:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
     # docker volume inspect test_reports_volume
@@ -47,7 +51,6 @@ jobs:
 
       # Store test report files as artifacts
       - store_artifacts:
-          #path: ~/test-reports
           path: /root/project/qa-stockwell/TestReports
           destination: test-reports
 
@@ -59,11 +62,6 @@ jobs:
             ls -al 
             ls -al /root/project/qa-stockwell/TestReports
 
-# # Flush (delete) reports from artifacts
-#       - run:
-#           name: Flush Reports from Artifacts
-#           command: |
-#             rm -rf /root/project/qa-stockwell/TestReports/*
 
 workflows:
   version: 2
