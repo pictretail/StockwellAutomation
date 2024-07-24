@@ -10,12 +10,20 @@ jobs:
 
       # Install Docker client inside the CircleCI Docker executor
       - setup_remote_docker
-      
+          docker_layer_caching: false
+
       # Build the Docker image using Dockerfile
       - run:
           name: Build Docker Image
           command: |
             docker build -t automationimage .
+
+      # Flush (delete) reports from artifacts
+      - run:
+          name: Flush Reports from Artifacts
+          command: |
+            rm -rf /root/project/qa-stockwell/TestReports/*
+
 
       # Optionally, you can run tests or other commands inside the Docker container
       - run:
@@ -40,11 +48,11 @@ jobs:
             ls -al 
             ls -al /root/project/qa-stockwell/TestReports
 
-# Flush (delete) reports from artifacts
-      - run:
-          name: Flush Reports from Artifacts
-          command: |
-            rm -rf /root/project/reports/*
+# # Flush (delete) reports from artifacts
+#       - run:
+#           name: Flush Reports from Artifacts
+#           command: |
+#             rm -rf /root/project/qa-stockwell/TestReports/*
 
 workflows:
   version: 2
