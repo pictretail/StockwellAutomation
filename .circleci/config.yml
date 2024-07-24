@@ -30,10 +30,9 @@ jobs:
       - run:
           name: Run Tests inside Docker Container
           command: |
-            docker run -v /home/seluser/stockwellautomation/qa-stockwell/TestReports:/root/project/qa-stockwell/TestReports automationimage
+            docker run -v /root/project:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
          
-#docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
-            
+    # docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage       
     # docker volume create test_reports_volume
     # docker run -v test_reports_volume:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
     # docker volume inspect test_reports_volume
@@ -44,7 +43,7 @@ jobs:
       # Store test report files as artifacts
       - store_artifacts:
           #path: ~/test-reports
-          path: /root/project/qa-stockwell/TestReports
+          path: /root/project
           destination: test-reports
 
       # List all files in the /root/project/reports folder
