@@ -5,13 +5,15 @@ jobs:
     docker:
       - image: docker:stable
 
-# Flush (delete) reports from artifacts
+
+
+    steps:
+    # Flush (delete) reports from artifacts
       - run:
           name: Flush Reports from Artifacts
           command: |
             rm -rf /root/project/
-            
-    steps:
+
       - checkout
 
       # Install Docker client inside the CircleCI Docker executor
