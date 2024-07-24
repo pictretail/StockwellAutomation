@@ -41,7 +41,7 @@ jobs:
       # Store test report files as artifacts
       - store_artifacts:
           #path: ~/test-reports
-          path: test_reports_volume
+          path: /var/lib/docker/volumes/test_reports_volume/_data
           destination: test-reports
 
       # List all files in the /root/project/reports folder
