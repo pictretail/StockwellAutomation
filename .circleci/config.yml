@@ -29,15 +29,19 @@ jobs:
       - run:
           name: Run Tests inside Docker Container
           command: |
-            chmod -R +rw /root/project/qa-stockwell
-            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage  # Example command to run tests
+            docker volume create test_reports_volume
+            docker run -v test_reports_volume:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
+            docker volume inspect test_reports_volume
+          # chmod -R +rw /root/project/qa-stockwell
+          # docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage  # Example command to run tests
            # find . -type f -regex ".*/TestReports" -exec cp {} ~/test-reports \;
+            
 
 
       # Store test report files as artifacts
       - store_artifacts:
           #path: ~/test-reports
-          path: /root/project/qa-stockwell/TestReports
+          path: test_reports_volume
           destination: test-reports
 
       # List all files in the /root/project/reports folder
