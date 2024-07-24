@@ -34,10 +34,11 @@ jobs:
 
       # List all files in the /root/project/reports folder
       - run:
-          name: List Files in /root/project/reports Folder
+          name: List Files in the Folder
           command: |
             pwd
             ls -al 
+            ls -al /root/project/qa-stockwell/TestReports
 
 # Flush (delete) reports from artifacts
       - run:
