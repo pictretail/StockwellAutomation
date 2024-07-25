@@ -66,9 +66,11 @@ public class Listeners implements ITestListener {
  
 	
 	  public void onTestSuccess(ITestResult result) {
-		TestInfra.capturePassedScreenshot();
+		//TestInfra.capturePassedScreenshot();
 	    ExtFactory.getInstance().getExtent().log(Status.PASS, " method [" +result.getMethod().getMethodName() + "] is passed"); 
-	//   if(TestInfra.updateTestRail.toLowerCase().equals(Constants.YES.toLowerCase())){ 
+		ExtFactory.getInstance().getExtent().addScreenCaptureFromBase64String(TestInfra.captureScreenShotAsBase64());
+			
+		//   if(TestInfra.updateTestRail.toLowerCase().equals(Constants.YES.toLowerCase())){ 
 	//      ArrayList<String> testCaseIdsList = getTestCaseIdsFromDescription(result.getMethod().getDescription()); 
 	   
     //   for(String testId : testCaseIdsList) {
@@ -116,7 +118,9 @@ public class Listeners implements ITestListener {
 				ExtFactory.getInstance().getExtent().log(Status.FAIL, linesofExc[0]);
 				screenshot = objReportName.getScreenshot(Factory.getDriver());
 				//String sysPath = FilePath.FILE + TestInfra.HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
-				ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
+				//ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
+				ExtFactory.getInstance().getExtent().addScreenCaptureFromBase64String(TestInfra.captureScreenShotAsBase64());
+			
 			}
 			ExtFactory.getInstance().getExtent().log(Status.FAIL, "Test Case is failed");
 			ExtFactory.getInstance().removeExtentObject();

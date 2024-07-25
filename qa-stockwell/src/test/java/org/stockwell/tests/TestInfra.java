@@ -2,8 +2,15 @@ package org.stockwell.tests;
 
 
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.stockwell.browser.Browser;
 import org.stockwell.browser.Factory;
 import org.stockwell.keys.Constants;
@@ -90,5 +97,20 @@ public class TestInfra {
 			TestInfra.failWithScreenShot(exc.toString());
 		}
 	}
+	public static String captureScreenShotAsBase64() {
+	        String base64String = "";
+	        try {
+	            TakesScreenshot screenshot = (TakesScreenshot)(Factory.getDriver());
+	            File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
+ 
+	            // Convert the file to Base64
+	            Path path = Paths.get(srcFile.getPath());
+	            byte[] fileContent = Files.readAllBytes(path);
+	            base64String = Base64.getEncoder().encodeToString(fileContent);
 
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return base64String;
+	    }
 }
