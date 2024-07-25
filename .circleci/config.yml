@@ -5,10 +5,7 @@ jobs:
     docker:
       - image: docker:stable
 
-
-
     steps:
-    # Flush (delete) reports from artifacts
       - run:
           name: Flush Reports from Artifacts
           command: |
@@ -16,42 +13,30 @@ jobs:
 
       - checkout
 
-      # Install Docker client inside the CircleCI Docker executor
       - setup_remote_docker:
           docker_layer_caching: false
 
-      # Build the Docker image using Dockerfile
       - run:
           name: Build Docker Image
           command: |
             docker build -t automationimage .
 
-      
-   
-
-
-      # Optionally, you can run tests or other commands inside the Docker container
       - run:
           name: Run Tests inside Docker Container
           command: |
-            chmod -R +rw /root/project/qa-stockwell/TestReports
-            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
+            pwd
             ls -al /home/seluser/stockwellautomation/qa-stockwell/TestReports
-            ls -al /root/project/qa-stockwell/TestReports
-   
-    # docker volume create test_reports_volume
-    # docker run -v test_reports_volume:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage
-    # docker volume inspect test_reports_volume
-    # chmod -R +rw /root/project/qa-stockwell
-             
 
+            # Run tests inside the Docker container
+            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage bash -c '
+              pwd
+              ls -al /home/seluser/stockwellautomation/qa-stockwell/TestReports
+            '
 
-      # Store test report files as artifacts
       - store_artifacts:
           path: /root/project/qa-stockwell/TestReports
           destination: test-reports
 
-      # List all files in the /root/project/reports folder
       - run:
           name: List Files in the Folder
           command: |
@@ -59,10 +44,8 @@ jobs:
             ls -al 
             ls -al /root/project/qa-stockwell/TestReports
 
-
 workflows:
   version: 2
   build:
     jobs:
       - build
-      
