@@ -24,11 +24,8 @@ jobs:
       - run:
           name: Run Tests inside Docker Container
           command: |
-            pwd
-        
-            # Run tests inside the Docker container
-            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage 
-           
+            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage ls -al /home/seluser/stockwellautomation/qa-stockwell/TestReports
+
       - store_artifacts:
           path: /root/project/qa-stockwell/TestReports
           destination: test-reports
