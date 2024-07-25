@@ -97,7 +97,6 @@ public class ExtReport {
 		
 			//reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
 			reportFullPath = rootFolder + timeStamp +  Constants.REPORT_NAME;
-			System.out.println();
 			System.out.println("reportFullPath"+reportFullPath);
 			objSparkReporter = new ExtentSparkReporter(reportFullPath);
 			objSparkReporter.config().setTheme(Theme.DARK);
@@ -105,6 +104,7 @@ public class ExtReport {
 			objSparkReporter.config().setDocumentTitle(this.reportBrowserTitleName);
 			objExtentReport = new ExtentReports();
 			objExtentReport.attachReporter(objSparkReporter);
+			System.out.println("Attached the report");
 		} catch (Exception exc) {
 			exc.printStackTrace();
 			Assert.fail(exc.toString());
