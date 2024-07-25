@@ -6,10 +6,10 @@ jobs:
       - image: docker:stable
 
     steps:
-      - run:
-          name: Flush Reports from Artifacts
-          command: |
-            rm -rf /root/project/
+      # - run:
+      #     name: Flush Reports from Artifacts
+      #     command: |
+      #       rm -rf /root/project/
 
       - checkout
 
@@ -24,8 +24,8 @@ jobs:
       - run:
           name: Run Tests inside Docker Container
           command: |
-            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage ls -al /home/seluser/stockwellautomation/qa-stockwell/TestReports
-
+            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage 
+            
       - store_artifacts:
           path: /root/project/qa-stockwell/TestReports
           destination: test-reports
