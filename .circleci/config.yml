@@ -21,11 +21,18 @@ jobs:
           command: |
             docker build -t automationimage .
 
+
       - run:
           name: Run Tests inside Docker Container
           command: |
-            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage 
-            
+            # docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage 
+            docker run --name my_container automationimage
+
+      - run:
+          name: Copy Files from Container
+          command: |
+            docker cp my_container:/home/seluser/stockwellautomation/qa-stockwell/TestReports /root/project/qa-stockwell/TestReports
+
       - store_artifacts:
           path: /root/project/qa-stockwell/TestReports
           destination: test-reports
