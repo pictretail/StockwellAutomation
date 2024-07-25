@@ -27,11 +27,7 @@ jobs:
             pwd
         
             # Run tests inside the Docker container
-            docker run -v /root/project/qa-stockwell/TestReports:/home/seluser/stockwellautomation/qa-stockwell/TestReports automationimage bash -c '
-              pwd
-              ls -al /root/project/qa-stockwell/TestReports
-              ls -al /home/seluser/stockwellautomation/qa-stockwell/TestReports
-            '
+            docker run -v /root/project/qa-stockwell:/home/seluser/stockwellautomation/qa-stockwell automationimage 
 
       - store_artifacts:
           path: /root/project/qa-stockwell/TestReports
