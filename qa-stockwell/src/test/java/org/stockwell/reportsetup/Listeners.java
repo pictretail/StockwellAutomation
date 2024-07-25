@@ -1,5 +1,9 @@
 package org.stockwell.reportsetup;
  
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -161,6 +165,18 @@ public class Listeners implements ITestListener {
 		// }
 		
 		objReport.flush();
+
+		Path path = Paths.get(objReportName.reportFullPath);
+ 
+        // Check if the path exists
+        if (Files.exists(path)) {
+            System.out.println("The path exists.");
+			System.out.println("Print the path" +path);
+        } else {
+            System.out.println("The path does not exist.");
+        }
+		
+
 	}
  
 	public void initializeMap(Map<String, Integer> map) {
