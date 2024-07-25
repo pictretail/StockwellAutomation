@@ -160,7 +160,7 @@ public class Listeners implements ITestListener {
 		// 		listResultSetFinal.add(map);
 		// }
 		
-		//objReport.flush();
+		objReport.flush();
 	}
  
 	public void initializeMap(Map<String, Integer> map) {
