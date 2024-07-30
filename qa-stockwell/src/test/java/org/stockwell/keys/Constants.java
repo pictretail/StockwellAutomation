@@ -12,7 +12,7 @@ public class Constants {
 		public static final String REGEX_DDMMYYYY = "ddMMYYYY";
 		public static final String REGEX_HHMMSS = "HHmmss";
 		public static final String REPORT_NAME = ".html";
-		public static final String REPORTS = "/testReports/";
+		public static final String REPORTS = "/test-reports/";
 		public static final String TEST_RAIL_PASS_MESSAGE = "AutomationTest Pass";
 		public static final String TEST_RAIL_PASS_STATUSID = "1";
 		public static final String TEST_RAIL_FAIL_STATUSID = "5";
