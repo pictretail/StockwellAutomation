@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Copy Files from Container
           command: |
-            docker cp automation_container:/home/seluser/stockwellautomation/qa-stockwell/test-reports /root/project/qa-stockwell/test-reports
+            docker cp automation_container:/home/seluser/stockwellautomation/qa-stockwell/test-reports /root/project/qa-stockwell
 
       - store_artifacts:
           path: /root/project/qa-stockwell/test-reports
