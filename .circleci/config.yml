@@ -29,8 +29,8 @@ jobs:
             docker cp automation_container:/home/seluser/stockwellautomation/qa-stockwell/test-reports /root/project/qa-stockwell/test-reports
 
       - store_artifacts:
-          path: /root/project/qa-stockwell/test-reports
-          destination: test-reports
+          path: /root/project/qa-stockwell
+          destination: dockerreports
 
 workflows:
   version: 2
