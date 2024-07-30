@@ -130,6 +130,8 @@
                   <a name="verifyLoginPageAsSuperUser">
                   </a> <!-- verifyLoginPageAsSuperUser -->
                   <span class="method-name">verifyLoginPageAsSuperUser</span>
+                  <em>
+(C246383 - Login to the application with valid credentials)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -145,12 +147,13 @@
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite thread-count=&quot;1&quot; parallel=&quot;methods&quot; name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
   &lt;parameter name=&quot;environment&quot; value=&quot;staging&quot;/&gt;
+  &lt;parameter name=&quot;UpdateTestRail&quot; value=&quot;no&quot;/&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;org.stockwell.reportsetup.Listeners&quot;/&gt;
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;1&quot; parallel=&quot;methods&quot; name=&quot;Test&quot; verbose=&quot;0&quot;&gt;
     &lt;parameter name=&quot;driver&quot; value=&quot;staging&quot;/&gt;
-    &lt;parameter name=&quot;browser&quot; value=&quot;Chrome&quot;/&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;org.stockwell.tests.LoginTest&quot;&gt;
         &lt;methods&gt;
@@ -200,12 +203,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'verifyLoginPageAsSuperUser')
 data.setCell(0, 2, 'org.stockwell.tests.LoginTest')
-data.setCell(0, 3, 13873);
+data.setCell(0, 3, 10150);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 13 seconds</span>
+              <span class="suite-total-time">Total running time: 10 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -232,25 +235,29 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">org.stockwell.tests.LoginTest</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">beforeSuit(staging, no)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">beforeClass</span>
-                <span class="method-start">0 ms</span>
+                <span class="method-start">443 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeMethod(staging, Chrome)</span>
-                <span class="method-start">25 ms</span>
+                <span class="method-name">beforeMethod(staging, chrome)</span>
+                <span class="method-start">451 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyLoginPageAsSuperUser</span>
-                <span class="method-start">3493 ms</span>
+                <span class="method-start">2421 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod</span>
-                <span class="method-start">17635 ms</span>
+                <span class="method-start">12783 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">17795 ms</span>
+                <span class="method-start">12897 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

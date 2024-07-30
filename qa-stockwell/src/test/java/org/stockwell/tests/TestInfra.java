@@ -1,19 +1,17 @@
 package org.stockwell.tests;
 
 
-
 import java.io.File;
+import java.net.InetAddress;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.stockwell.browser.Browser;
 import org.stockwell.browser.Factory;
-import org.stockwell.keys.Constants;
 import org.stockwell.keys.FilePath;
 import org.stockwell.pages.Login;
 import org.stockwell.reportsetup.ExtFactory;
@@ -23,6 +21,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import com.aventstack.extentreports.Status;
@@ -63,6 +62,19 @@ public class TestInfra {
 		}
 	}
 
+    @Parameters({ "environment", "UpdateTestRail" })
+	@BeforeSuite
+	public void beforeSuit(String environment, String testRail) {
+		try {
+			filePath.setEnvironment(environment);
+			updateTestRail = testRail;
+			HOST = InetAddress.getLocalHost().getHostName();
+			System.out.println("Host" +HOST);
+		} catch (Exception exc) {
+			TestInfra.failWithScreenShot(exc.toString());
+		}
+	}
+
 	@AfterMethod
 	public void afterMethod() {
 		try {
@@ -97,6 +109,7 @@ public class TestInfra {
 			TestInfra.failWithScreenShot(exc.toString());
 		}
 	}
+	
 	public static String captureScreenShotAsBase64() {
 	        String base64String = "";
 	        try {

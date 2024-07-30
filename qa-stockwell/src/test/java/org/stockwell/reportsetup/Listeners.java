@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.stockwell.keys.Constants;
+import org.stockwell.testrail.Testrail;
 import org.stockwell.tests.TestInfra;
 import org.stockwell.browser.Factory;
 import org.testng.ITestContext;
@@ -29,7 +30,7 @@ public class Listeners implements ITestListener {
 	static ExtentReports objReport;
 	public static ExtReport objReportName;
 	ExtentTest test;
-	//private Testrail testRail = new Testrail();
+	private Testrail testRail = new Testrail();
  
 	public static int passedCount;
 	public static int failedCount;
@@ -69,18 +70,17 @@ public class Listeners implements ITestListener {
 		//TestInfra.capturePassedScreenshot();
 	    ExtFactory.getInstance().getExtent().log(Status.PASS, " method [" +result.getMethod().getMethodName() + "] is passed"); 
 		ExtFactory.getInstance().getExtent().addScreenCaptureFromBase64String(TestInfra.captureScreenShotAsBase64());
-			
-		//   if(TestInfra.updateTestRail.toLowerCase().equals(Constants.YES.toLowerCase())){ 
-	//      ArrayList<String> testCaseIdsList = getTestCaseIdsFromDescription(result.getMethod().getDescription()); 
-	   
-    //   for(String testId : testCaseIdsList) {
-	//    System.out.println("***[PASS Test Case Id]***: " + testId);
-	//    testRail.testRailPassResult(testId);
-	//   } 
+		
+		if(TestInfra.updateTestRail.toLowerCase().equals(Constants.YES.toLowerCase())){ 
+	    ArrayList<String> testCaseIdsList = getTestCaseIdsFromDescription(result.getMethod().getDescription()); 
+	    for(String testId : testCaseIdsList) {
+	    System.out.println("***[PASS Test Case Id]***: " + testId);
+	    testRail.testRailPassResult(testId);
+	  } 
 	} 
-	// passedCount++; 
-	// int index =classNames.indexOf(result.getMethod().getRealClass().getSimpleName());
-	// updateCount(listResultSet.get(index), Constants.PASS,result.getMethod().getRealClass().getSimpleName()); }
+	 passedCount++; 
+	 int index =classNames.indexOf(result.getMethod().getRealClass().getSimpleName());
+	 updateCount(listResultSet.get(index), Constants.PASS,result.getMethod().getRealClass().getSimpleName()); }
 	 
 	/*
 	 * Get all test case id from description
@@ -97,19 +97,20 @@ public class Listeners implements ITestListener {
 	}
  
 	public void onTestFailure(ITestResult result) {
-//		// update fail count
-//		failedCount++;
-//		int index = classNames.indexOf(result.getMethod().getRealClass().getSimpleName());
-//		updateCount(listResultSet.get(index), Constants.FAIL, result.getMethod().getRealClass().getSimpleName());
-//		// update test rail
-//		if (TestInfra.updateTestRail.toLowerCase().equals(Constants.YES.toLowerCase())) {
-//			ArrayList<String> testCaseIdsList = getTestCaseIdsFromDescription(result.getMethod().getDescription());
-//			for (String testId : testCaseIdsList) {
-//				System.out.println("***[FAIL Test Case Id]***: " + testId);
-//				testRail.testRailFailResult(testId, "Exception is " + result.getThrowable());
-//			}
-//		}
- 
+		
+		// update test rail
+		if (TestInfra.updateTestRail.toLowerCase().equals(Constants.YES.toLowerCase())) {
+			ArrayList<String> testCaseIdsList = getTestCaseIdsFromDescription(result.getMethod().getDescription());
+			for (String testId : testCaseIdsList) {
+				System.out.println("***[FAIL Test Case Id]***: " + testId);
+				testRail.testRailFailResult(testId, "Exception is " + result.getThrowable());
+			}
+		}
+		// update fail count
+				failedCount++;
+				int index = classNames.indexOf(result.getMethod().getRealClass().getSimpleName());
+				updateCount(listResultSet.get(index), Constants.FAIL, result.getMethod().getRealClass().getSimpleName());
+				
 		// get screenshot
 		try {
 			String screenshot = null;
@@ -117,10 +118,8 @@ public class Listeners implements ITestListener {
 			if (!linesofExc[0].contains(TestInfra.THROWABLE_EXCEPTION)) {
 				ExtFactory.getInstance().getExtent().log(Status.FAIL, linesofExc[0]);
 				screenshot = objReportName.getScreenshot(Factory.getDriver());
-				//String sysPath = FilePath.FILE + TestInfra.HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
 				//ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
 				ExtFactory.getInstance().getExtent().addScreenCaptureFromBase64String(TestInfra.captureScreenShotAsBase64());
-			
 			}
 			ExtFactory.getInstance().getExtent().log(Status.FAIL, "Test Case is failed");
 			ExtFactory.getInstance().removeExtentObject();
@@ -163,24 +162,12 @@ public class Listeners implements ITestListener {
 	}
  
 	public void onFinish(ITestContext context) {
-		// for (Map<String, Integer> map : listResultSet) {
-		// 	if (!map.isEmpty())
-		// 		listResultSetFinal.add(map);
-		// }
+		 for (Map<String, Integer> map : listResultSet) {
+		 	if (!map.isEmpty())
+		 		listResultSetFinal.add(map);
+		 }
 		
 		objReport.flush();
-
-		Path path = Paths.get(objReportName.reportFullPath);
- 
-        // Check if the path exists
-        if (Files.exists(path)) {
-            System.out.println("The path exists.");
-			System.out.println("Print the path" +path);
-        } else {
-            System.out.println("The path does not exist.");
-        }
-		
-
 	}
  
 	public void initializeMap(Map<String, Integer> map) {

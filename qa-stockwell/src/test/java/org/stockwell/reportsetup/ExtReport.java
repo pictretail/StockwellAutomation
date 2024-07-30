@@ -21,20 +21,19 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtReport {
 
 	public String rootFolder = FilePath.PATH + Constants.REPORTS;
-	private String presentSubFolderName = Constants.EMPTY_STRING;
+	//private String presentSubFolderName = Constants.EMPTY_STRING;
 	private String presentRootFolderPath;
+	private String reportFullPath;
 	private DateAndTime objDate;
-
-	public static String reportFullPath;
 
 	ExtentSparkReporter objSparkReporter;
 	ExtentReports objExtentReport;
 	ExtentTest objExtentTest;
 
-	private String reportMainTitleName = Constants.EMPTY_STRING;
-	private String reportBrowserTitleName = Constants.EMPTY_STRING;
+	private String documentTitle = Constants.EMPTY_STRING;
+	private String reportTitle = Constants.EMPTY_STRING;
 
-	public ExtReport(String reportMainTitleName, String reportBrowserTitleName) {
+	public ExtReport(String documentTitle, String reportTitle) {
 		objDate = new DateAndTime();
 		Path reportFolder = Paths.get(this.rootFolder);
 		Path path = Paths
@@ -47,13 +46,12 @@ public class ExtReport {
 				Files.createDirectory(path);
 			}
 			this.presentRootFolderPath = path.toString();
-			this.reportMainTitleName = reportMainTitleName;
-			this.reportBrowserTitleName = reportBrowserTitleName;
+			this.documentTitle = documentTitle;
+			this.reportTitle = reportTitle;
 		} catch (IOException exc) {
 			exc.printStackTrace();
 			Assert.fail(exc.toString());
 		}
-
 	}
 
 	public String getPresentRootFolderPath() {
@@ -61,21 +59,21 @@ public class ExtReport {
 	}
 
 	
-	private String createReportSubFolder() {
-		presentSubFolderName = presentRootFolderPath + "//"
-				+ objDate.getDateAndTime(Constants.REGEX_HHMMSS, Constants.TIME_ZONE_INDIA);
-		try {
-			Files.createDirectories(Paths.get(presentSubFolderName));
-		} catch (IOException exc) {
-			Assert.fail(exc.toString());
-		}
-		return presentSubFolderName;
-	}
+	// private String createReportSubFolder() {
+	// 	presentSubFolderName = presentRootFolderPath + "/"
+	// 			+ objDate.getDateAndTime(Constants.REGEX_HHMMSS, Constants.TIME_ZONE_INDIA);
+	// 	try {
+	// 		Files.createDirectories(Paths.get(presentSubFolderName));
+	// 	} catch (IOException exc) {
+	// 		Assert.fail(exc.toString());
+	// 	}
+	// 	return presentSubFolderName;
+	// }
 
 
-	public String getPresentSubFolderPath() {
-		return presentSubFolderName;
-	}
+	// public String getPresentSubFolderPath() {
+	// 	return presentSubFolderName;
+	// }
 
 	public String getScreenshot(WebDriver driver) {
 		String timeStamp = objDate.getDateAndTime(Constants.TIME_STAMP, Constants.TIME_ZONE_INDIA);
@@ -93,23 +91,19 @@ public class ExtReport {
 
 	public ExtentReports getReporter() {
 		try {
-			String timeStamp = objDate.getDateAndTime(Constants.TIME_STAMP, Constants.TIME_ZONE_INDIA);
-		
-			//reportFullPath = createReportSubFolder() + Constants.REPORT_NAME;
-			reportFullPath = rootFolder + timeStamp +  Constants.REPORT_NAME;
-			System.out.println("reportFullPath"+reportFullPath);
+			String timeStamp = objDate.getDateAndTime(Constants.REGEX_HHMMSS, Constants.TIME_ZONE_INDIA);
+			reportFullPath = getPresentRootFolderPath()+"/"+timeStamp+Constants.REPORT_NAME;
 			objSparkReporter = new ExtentSparkReporter(reportFullPath);
 			objSparkReporter.config().setTheme(Theme.DARK);
-			objSparkReporter.config().setReportName(this.reportMainTitleName);
-			objSparkReporter.config().setDocumentTitle(this.reportBrowserTitleName);
+			objSparkReporter.config().setReportName(this.documentTitle);
+			objSparkReporter.config().setDocumentTitle(this.reportTitle);
 			objExtentReport = new ExtentReports();
+			objExtentReport.setSystemInfo("Environment", "staging");
 			objExtentReport.attachReporter(objSparkReporter);
-			System.out.println("Attached the report");
 		} catch (Exception exc) {
 			exc.printStackTrace();
 			Assert.fail(exc.toString());
 		}
-
 		return objExtentReport;
 	}
 }

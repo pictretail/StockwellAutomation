@@ -1,8 +1,5 @@
 package org.stockwell.browser;
 
-//import java.util.HashMap;
-//import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -43,10 +40,8 @@ public class Factory {
             cap.addArguments("--use-gl=swiftshader");
             cap.addArguments("--disable-dev-shm-usage");
             WebDriver driver = new ChromeDriver(cap);
-            //webdriver.set(new RemoteWebDriver(url,cap));
-            webDriver.set(driver);
-					 
-				} 
+            webDriver.set(driver); 
+			} 
 		} catch (Exception exc) {
 			Assert.fail(exc.toString());
 		}

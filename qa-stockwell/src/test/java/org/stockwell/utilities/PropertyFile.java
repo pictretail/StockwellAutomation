@@ -3,12 +3,11 @@ package org.stockwell.utilities;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
 import org.stockwell.keys.Constants;
 import org.testng.Assert;
-public class PropertyFile  {
 
-	
+public class PropertyFile  {	
+    
     public String readPropertyFile(String requiredData, String filePath)  {
 		Properties configFile = new Properties();
         String requiredString = Constants.EMPTY_STRING;

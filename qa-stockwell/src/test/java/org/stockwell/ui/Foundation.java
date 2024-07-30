@@ -43,6 +43,7 @@ public class Foundation extends Factory {
 		}
 		return (text);
 	}
+
 	public void objectFocus(By element) {
 		Actions action = new Actions(getDriver());
 		Action seriesOfActions = action.moveToElement(getDriver().findElement(element)).build();
@@ -50,6 +51,7 @@ public class Foundation extends Factory {
 		if (ExtFactory.getInstance().getExtent() != null)
 			ExtFactory.getInstance().getExtent().log(Status.INFO, "the object [" + element + " ] is focused");
 	}
+
 	public void click(By object) {
 		try {
 			objectFocus(object);
@@ -61,7 +63,6 @@ public class Foundation extends Factory {
 			TestInfra.failWithScreenShot(exc.toString());
 		}
 	}
-
 
 	public WebElement waitforElement(By object, int waitTime) {
 		WebElement element = null;

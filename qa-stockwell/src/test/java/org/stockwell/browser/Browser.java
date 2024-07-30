@@ -1,4 +1,5 @@
 package org.stockwell.browser;
+
 import org.stockwell.reportsetup.ExtFactory;
 import org.testng.Assert;
 import com.aventstack.extentreports.Status;
@@ -17,8 +18,6 @@ public class Browser extends Factory {
 
 	public void close() {
 		try {
-			//WebDriver browser = getDriver();
-			//browser.quit();
 			getDriver().quit();
 			if (ExtFactory.getInstance().getExtent() != null)
 				ExtFactory.getInstance().getExtent().log(Status.INFO, "closed the browser");

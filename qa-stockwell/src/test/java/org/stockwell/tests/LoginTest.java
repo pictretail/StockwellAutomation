@@ -12,14 +12,13 @@ import org.testng.annotations.Test;
 public class LoginTest extends TestInfra {
 	private Foundation foundation = new Foundation();
 	
-	@Test
+	@Test(description = "C246383 - Login to the application with valid credentials")
 	public void verifyLoginPageAsSuperUser() {
-		
 		try {
 			//Valid login verification
 			browser.navigateURL(
 					propertyFile.readPropertyFile(Configuration.CURRENT_URL, FilePath.PROPERTY_CONFIG_FILE));
-			login.login(
+				login.login(
 					propertyFile.readPropertyFile(Configuration.SUPER_USER, FilePath.PROPERTY_CONFIG_FILE),
 					propertyFile.readPropertyFile(Configuration.PASSWORD, FilePath.PROPERTY_CONFIG_FILE));
 			foundation.waitforElement(Login.BTN_HAMBURGER, 5);

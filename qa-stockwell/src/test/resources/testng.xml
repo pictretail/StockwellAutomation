@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="methods" thread-count="1">
 	<parameter name="environment" value="staging" />
+	<parameter name="UpdateTestRail" value="no" />
 	
 <listeners>
 		<listener class-name="org.stockwell.reportsetup.Listeners"></listener>
@@ -9,7 +10,7 @@
 
 	<test name="Test">
 		<parameter name="driver" value="staging" />
-		<parameter name="browser" value="Chrome" />
+		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="org.stockwell.tests.LoginTest" >
 	       
