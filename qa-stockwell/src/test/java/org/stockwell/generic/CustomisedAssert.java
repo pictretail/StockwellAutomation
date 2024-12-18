@@ -1,7 +1,7 @@
 package org.stockwell.generic;
 
-import org.stockwell.reportsetup.ExtFactory;
-import org.stockwell.tests.TestInfra;
+import org.stockwell.reportsetup.UTReportFactory;
+import org.stockwell.tests.TestBase;
 import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 
@@ -11,10 +11,10 @@ public class CustomisedAssert {
 		try 
 		{
 			Assert.assertTrue(condition);
-			ExtFactory.getInstance().getExtent().log(Status.INFO, "AssertTrue:["+condition+"]");
+			UTReportFactory.getInstance().getExtent().log(Status.INFO, "AssertTrue:["+condition+"]");
 		}
 		catch(AssertionError exc){
-			TestInfra.failWithScreenShot(exc.toString());
+			TestBase.captureScreenshot(exc.toString());
 		}
 	}
 

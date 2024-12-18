@@ -3,26 +3,15 @@
 <suite name="Suite" parallel="methods" thread-count="1">
 	<parameter name="environment" value="staging" />
 	<parameter name="UpdateTestRail" value="no" />
-	
-<listeners>
-		<listener class-name="org.stockwell.reportsetup.Listeners"></listener>
-</listeners>
 
 	<test name="Test">
-		<parameter name="driver" value="staging" />
-		<parameter name="browser" value="chrome" />
+		<parameter name="browser" value="chrome"/>
 		<classes>
-			<class name="org.stockwell.tests.LoginTest" >
-	       
-				 <methods>
-
-					<include name="verifyLoginPageAsSuperUser" />
-
-    			 </methods>
-		    
+			<class name="org.stockwell.tests.LoginTest">
+				<methods>
+					<include name="verifyLoginPageAsSuperUser"/>
+				</methods>
 			</class>
 		</classes>
-	</test> <!-- Test -->
-
-
-</suite> <!-- Suite -->
+	</test> 
+</suite> 
