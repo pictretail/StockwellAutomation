@@ -11,10 +11,10 @@ RUN apt-get update \
         unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install OpenJDK 11 (or another version you prefer)
+# Install OpenJDK 17 (or another version you prefer)
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        openjdk-11-jdk \
+        openjdk-17-jdk \
     && rm -rf /var/lib/apt/lists/*
 
 # Set JAVA_HOME environment variable

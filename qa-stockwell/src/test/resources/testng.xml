@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="methods" thread-count="1">
 	<parameter name="executionenvironment" value="staging" />
 	<parameter name="UpdateTestRail" value="no" />
-	<parameter name="environment" value="local"></parameter>
+	<parameter name="environment" value="local"/>
 	<parameter name="browser" value="chrome"/>
 	
 	<test name="Test">
