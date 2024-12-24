@@ -23,6 +23,7 @@ public class LoginTest extends TestBase {
 					propertyFile.readPropertyFile(Configuration.PASSWORD, FilePath.PROPERTY_CONFIG_FILE));
 				base.waitforElement(Login.BTN_HAMBURGER, 5);
 			//UTAssert.assertTrue(base.getTitle().contains("dashboard"));
+				Thread.sleep(2000);
 				UTAssert.assertTrue(base.isDisplayed(Login.BTN_HAMBURGER));
 
 		} catch (Exception exc) {

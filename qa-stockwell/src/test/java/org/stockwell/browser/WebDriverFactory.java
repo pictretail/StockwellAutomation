@@ -18,10 +18,10 @@ public class WebDriverFactory {
 
     private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
-    public void setDriver(String browser) {
+    public void setDriver(String browser, String environment) {
         try {
             WebDriver driver;
-
+            if(environment.equalsIgnoreCase("local")) {
             switch (browser.toLowerCase()) {
                 case Constants.CHROME:
                     WebDriverManager.chromedriver().setup();
@@ -41,8 +41,22 @@ public class WebDriverFactory {
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + browser);
             }
+            webDriver.set(driver);  
+            }
+            else if(environment.equalsIgnoreCase("remote")) {
+            	ChromeOptions options = new ChromeOptions();
+                options.addArguments("--no-sandbox");
+                options.addArguments("enable-automation");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--headless"); 
+                options.addArguments("--disable-extensions");
+                options.addArguments("--use-gl=swiftshader");
+                options.addArguments("--disable-dev-shm-usage");
+                driver = new ChromeDriver(options);
+                webDriver.set(driver); 
+            }
 
-            webDriver.set(driver);  // Set the driver in ThreadLocal
+           // Set the driver in ThreadLocal
 
         } catch (Exception exc) {
             Assert.fail(exc.toString());
@@ -64,6 +78,7 @@ public class WebDriverFactory {
     private static ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments(getBrowserOptions());
+        options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("enable-automation");
         options.addArguments("--disable-gpu");

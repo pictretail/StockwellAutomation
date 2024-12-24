@@ -10,8 +10,8 @@ public class FilePath {
 	public static String PROPERTY_CONFIG_FILE;
 	//public static final String DRIVER_CHROME = PATH + "/src/test/resources/chromedriver.exe";
 	
-	public void setEnvironment(String environment) {
-		if (environment.equals(Constants.STAGING)) {
+	public void setEnvironment(String executionenvironment) {
+		if (executionenvironment.equals(Constants.STAGING)) {
 			PROPERTY_CONFIG_FILE = PATH + "/src/test/resources/ConfigStaging.properties";
 		} 
 	}

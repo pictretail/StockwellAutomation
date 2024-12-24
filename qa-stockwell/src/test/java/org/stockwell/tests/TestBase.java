@@ -54,21 +54,21 @@ public class TestBase {
                 + " - "+(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()) - startTimeSeconds));
     }
 
-	@Parameters( "browser")
+	@Parameters({"browser","environment"})
 	@BeforeMethod
-	public void beforeMethod(String browsers) {
+	public void beforeMethod(String browsers, String environment) {
 		try {
-			browser.launch(browsers);
+			browser.launch(browsers,environment);
 		} catch (Exception exc) {
 			TestBase.captureScreenshot(exc.toString());
 		}
 	}
 
-    @Parameters({ "environment", "UpdateTestRail" })
+    @Parameters({ "executionenvironment", "UpdateTestRail" })
 	@BeforeSuite
-	public void beforeSuit(String environment, String testRail) {
+	public void beforeSuit(String executionenvironment, String testRail) {
 		try {
-			filePath.setEnvironment(environment);
+			filePath.setEnvironment(executionenvironment);
 			updateTestRail = testRail;
 			HOST = InetAddress.getLocalHost().getHostName();
 		} catch (Exception exc) {

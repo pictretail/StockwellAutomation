@@ -6,9 +6,9 @@ import com.aventstack.extentreports.Status;
 
 public class Browser extends WebDriverFactory {
 	
-	public void launch(String browser) {
+	public void launch(String browser,String environment) {
 		try {
-			setDriver(browser);
+			setDriver(browser,environment);
 			if (UTReportFactory.getInstance().getExtent() != null)
 				UTReportFactory.getInstance().getExtent().log(Status.INFO, "[" + browser + " ]launched the browser");
 		} catch (Exception exc) {
