@@ -9,7 +9,7 @@ import org.stockwell.tests.TestBase;
 import org.stockwell.ui.UTBase;
 import org.stockwell.ui.UTTextBox;
 
-public class Login extends WebDriverFactory {
+public class Login {
 		private UTTextBox textBox = new UTTextBox();
 		private UTBase base = new UTBase();
 		

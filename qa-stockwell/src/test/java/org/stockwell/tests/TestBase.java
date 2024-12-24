@@ -16,6 +16,7 @@ import org.stockwell.keys.FilePath;
 import org.stockwell.pages.Login;
 import org.stockwell.reportsetup.UTReportFactory;
 import org.stockwell.utilities.PropertyFile;
+import org.stockwell.utilities.UTExcel;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -33,6 +34,7 @@ public class TestBase {
 	public FilePath filePath = new FilePath();
 	public Login login = new Login();
 	public PropertyFile propertyFile = new PropertyFile();
+	public UTExcel excel = new UTExcel();
 	public static String HOST = "";
 	public static String THROWABLE_EXCEPTION = "";
 	public static boolean THROWED_EXCEPTION = false;

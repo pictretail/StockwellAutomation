@@ -33,7 +33,25 @@ public class UTBase extends WebDriverFactory {
 		}
 		return isElementDisplayed;
 	}
-
+	public String getTitle() {
+		String title = null;
+		try {
+			title = getDriver().getTitle();
+		} catch (Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+		return title;
+	}
+	public String getCurrentUrl() {
+		String currentUrl=null;
+        try {
+             currentUrl = getDriver().getCurrentUrl();
+            
+        } catch (Exception exc) {
+        	TestBase.captureScreenshot(exc.toString());
+        }
+        return currentUrl;
+	}
 	public String getText(By locator) {
 		String text = null;
 		try {
