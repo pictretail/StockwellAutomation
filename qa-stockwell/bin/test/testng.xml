@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="methods" thread-count="1">
-	<parameter name="environment" value="staging" />
+	<parameter name="executionenvironment" value="staging" />
 	<parameter name="UpdateTestRail" value="no" />
+	<parameter name="environment" value="local"></parameter>
+	<parameter name="browser" value="chrome"/>
 	
-<listeners>
-		<listener class-name="org.stockwell.reportsetup.Listeners"></listener>
-</listeners>
-
 	<test name="Test">
-		<parameter name="driver" value="staging" />
-		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="org.stockwell.tests.LoginTest" >
-	       
-				 <methods>
-
-					<include name="verifyLoginPageAsSuperUser" />
-
-    			 </methods>
-		    
+			<class name="org.stockwell.tests.LoginTest">
+				<methods>
+					<include name="verifyLoginPageAsSuperUser"/>
+				</methods>
 			</class>
 		</classes>
-	</test> <!-- Test -->
-
-
-</suite> <!-- Suite -->
+	</test> 
+</suite> 

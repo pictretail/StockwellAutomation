@@ -1,7 +1,38 @@
-# Ignore Gradle project-specific cache directory
-.gradle
+# Eclipse IDE files
+.project
+.classpath
+.settings/
+.metadata/
 
-# Ignore Gradle build output directory
-build
+# IntelliJ IDEA files
+.idea/
 
-.vscode
+# Gradle files
+.gradle/
+build/
+.gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Java build artifacts
+/bin/
+/out/
+/target/
+
+# TestNG and Selenium specific files
+*/test-output/
+*/test-reports/
+test-output/
+logs/
+screenshots/
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Other temporary files
+*.class
+*.log
+*.tmp
+*.swp

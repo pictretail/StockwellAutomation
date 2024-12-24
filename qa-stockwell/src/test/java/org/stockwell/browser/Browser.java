@@ -1,16 +1,16 @@
 package org.stockwell.browser;
 
-import org.stockwell.reportsetup.ExtFactory;
+import org.stockwell.reportsetup.UTReportFactory;
 import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 
-public class Browser extends Factory {
+public class Browser extends WebDriverFactory {
 	
-	public void launch(String driver, String browser) {
+	public void launch(String browser,String environment) {
 		try {
-			setDriver(driver,browser);
-			if (ExtFactory.getInstance().getExtent() != null)
-				ExtFactory.getInstance().getExtent().log(Status.INFO, "[" + browser + " ]launched the browser");
+			setDriver(browser,environment);
+			if (UTReportFactory.getInstance().getExtent() != null)
+				UTReportFactory.getInstance().getExtent().log(Status.INFO, "[" + browser + " ]launched the browser");
 		} catch (Exception exc) {
 			Assert.fail(exc.toString());
 		}
@@ -19,8 +19,8 @@ public class Browser extends Factory {
 	public void close() {
 		try {
 			getDriver().quit();
-			if (ExtFactory.getInstance().getExtent() != null)
-				ExtFactory.getInstance().getExtent().log(Status.INFO, "closed the browser");
+			if (UTReportFactory.getInstance().getExtent() != null)
+				UTReportFactory.getInstance().getExtent().log(Status.INFO, "closed the browser");
 		} catch (Exception exc) {
 			Assert.fail(exc.toString());
 		}
@@ -30,8 +30,8 @@ public class Browser extends Factory {
 		try {
 			getDriver().get(url);
 			getDriver().manage().window().maximize();
-			if (ExtFactory.getInstance().getExtent() != null)
-				ExtFactory.getInstance().getExtent().log(Status.INFO, "navigated to url [" + url + " ]");
+			if (UTReportFactory.getInstance().getExtent() != null)
+				UTReportFactory.getInstance().getExtent().log(Status.INFO, "navigated to url [" + url + " ]");
 		} catch (Exception exc) {
 			Assert.fail(exc.toString());
 		}
