@@ -20,6 +20,7 @@ gradle-wrapper.properties
 
 # TestNG and Selenium specific files
 */test-output/
+*/test-reports/
 test-output/
 logs/
 screenshots/
