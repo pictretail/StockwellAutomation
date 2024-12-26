@@ -28,5 +28,8 @@ public class Constants {
 		public static final int THREE_SECOND = 3;
 		public static final int TWO_SECOND = 2;
 		public static final int SHORT_TIME = 5;
+		public static final String METRO = "365 Retail Markets";
+		public static final String SUBMETRO = "Campbell Office";
+		
 		
 }
