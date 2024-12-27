@@ -154,7 +154,19 @@ public class UTBase extends WebDriverFactory {
 		}
 		return elementsAttributeValue;
 	}
-
+	
+	public int getSizeofListElement(By locator){
+		int sizeOfList = 0;
+		try {
+			sizeOfList = getDriver().findElements(locator).size();
+			if(UTReportFactory.getInstance().getExtent() != null)
+				UTReportFactory.getInstance().getExtent().log(Status.INFO, locator+"count of list element is" +sizeOfList);
+		} catch(Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+		return sizeOfList;
+	}
+	
 	public List<String> getTextofListElement(By locator) {
 		String text = null;
 		List<String> elementsText = new ArrayList<String>();

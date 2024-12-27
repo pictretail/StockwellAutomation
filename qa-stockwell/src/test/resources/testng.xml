@@ -10,7 +10,7 @@
 		<classes>
 			<class name="org.stockwell.tests.TransactionReviewToolTest">
 				<methods>
-					<include name="VerifyAllTransactionsFields"/>
+					<include name="VerifyAllTransactionsVideoStatus"/>
 				</methods>
 			</class>
 		</classes>
