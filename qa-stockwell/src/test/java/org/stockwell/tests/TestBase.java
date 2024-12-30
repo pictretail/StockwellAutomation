@@ -25,6 +25,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
+
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 
@@ -89,37 +91,38 @@ public class TestBase {
 		try {
 			String linesofExc[] = exc.split("\\r?\\n");
 			THROWABLE_EXCEPTION = linesofExc[0];
-			String screenshot = org.stockwell.reportsetup.UTListeners.objReportName.getScreenshot(WebDriverFactory.getDriver());
-			//String sysPath = FilePath.FILE + HOST + screenshot.split(Constants.DELIMITER_COLON)[1];
-			//String sysPath = FilePath.FILE + HOST + screenshot;
-			UTReportFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
-			UTReportFactory.getInstance().getExtent().log(Status.FAIL, "Failed due to "+THROWABLE_EXCEPTION);
+			UTReportFactory.getInstance().getExtent().log(Status.FAIL, "Failed due to "+THROWABLE_EXCEPTION,
+					MediaEntityBuilder.createScreenCaptureFromBase64String(captureScreenShotAsBase64()).build());
+			
 			Assert.fail(exc);
 		} catch (Exception e) {
 			Assert.fail("Failed due to " + exc.toString() + " could not capture the screenshot due to " + e);
 		}
 	}
 
-	public static void capturePassedScreenshot() {
+	public static String capturePassedScreenshot() {
+		String screenshot ="";
 		try {
-			String screenshot = org.stockwell.reportsetup.UTListeners.objReportName.getScreenshot(WebDriverFactory.getDriver());
-			UTReportFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
+			screenshot = org.stockwell.reportsetup.UTListeners.objReportName.getScreenshot(WebDriverFactory.getDriver());
+			//UTReportFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
 		} catch (AssertionError exc) {
 			TestBase.captureScreenshot(exc.toString());
 		}
+		return screenshot;
 	}
 	
 	public static String captureScreenShotAsBase64() {
 	        String base64String = "";
 	        try {
 	            TakesScreenshot screenshot = (TakesScreenshot)(WebDriverFactory.getDriver());
-	            File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
+	            base64String = screenshot.getScreenshotAs(OutputType.BASE64);
  
-	            // Convert the file to Base64
-	            Path path = Paths.get(srcFile.getPath());
-	            byte[] fileContent = Files.readAllBytes(path);
-	            base64String = Base64.getEncoder().encodeToString(fileContent);
-
+//	            // Convert the file to Base64
+//	            Path path = Paths.get(srcFile.getPath());
+//	            byte[] fileContent = Files.readAllBytes(path);
+//	            base64String = Base64.getEncoder().encodeToString(fileContent);
+          //  UTReportFactory.getInstance().getExtent().addScreenCaptureFromBase64String(base64String);
+//				UTReportFactory.getInstance().getExtent().log(Status.FAIL, "Failed");
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }

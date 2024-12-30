@@ -1,7 +1,11 @@
 package org.stockwell.ui;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -15,10 +19,9 @@ import org.stockwell.reportsetup.UTReportFactory;
 import org.stockwell.tests.TestBase;
 import com.aventstack.extentreports.Status;
 
-
 public class UTBase extends WebDriverFactory {
 	DateAndTime dateAndTime = new DateAndTime();
-	
+
 	public boolean isDisplayed(By locator) {
 		boolean isElementDisplayed = false;
 		try {
@@ -33,6 +36,7 @@ public class UTBase extends WebDriverFactory {
 		}
 		return isElementDisplayed;
 	}
+
 	public String getTitle() {
 		String title = null;
 		try {
@@ -42,16 +46,18 @@ public class UTBase extends WebDriverFactory {
 		}
 		return title;
 	}
+
 	public String getCurrentUrl() {
-		String currentUrl=null;
-        try {
-             currentUrl = getDriver().getCurrentUrl();
-            
-        } catch (Exception exc) {
-        	TestBase.captureScreenshot(exc.toString());
-        }
-        return currentUrl;
+		String currentUrl = null;
+		try {
+			currentUrl = getDriver().getCurrentUrl();
+
+		} catch (Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+		return currentUrl;
 	}
+
 	public String getText(By locator) {
 		String text = null;
 		try {
@@ -81,7 +87,15 @@ public class UTBase extends WebDriverFactory {
 			TestBase.captureScreenshot(exc.toString());
 		}
 	}
-
+	public void objectClick(By object) {
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+			executor.executeScript("arguments[0].click();", getDriver().findElement(object));
+			UTReportFactory.getInstance().getExtent().log(Status.INFO, "clicked object [ " + object + " ] using javascript");
+		} catch (Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+	}
 	public WebElement waitforElement(By locator, int waitTime) {
 		WebElement element = null;
 		try {
@@ -118,5 +132,81 @@ public class UTBase extends WebDriverFactory {
 		} while ((!displayed) && (System.currentTimeMillis() - startTime) < waitTime * 1000);
 		return element;
 	}
+	
+	public List<WebElement> getListofAllWebElements(By element) {
+		List<WebElement> allElements = getDriver().findElements(element);
+		return allElements;
+	}
+	
+	public List<String> getAttributeValueofListElement(By locator, String attribute) {
+		String attributeValue = null;
+		List<String> elementsAttributeValue = new ArrayList<String>();
+		try {
+			List<WebElement> ListElement = getDriver().findElements(locator);
+			for (WebElement webElement : ListElement) {
+				attributeValue = webElement.getAttribute(attribute);
+				elementsAttributeValue.add(attributeValue);
+			}
+			UTReportFactory.getInstance().getExtent().log(Status.INFO,
+					"got the element attribute value for the object [" + locator + " ]");
+		} catch (Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+		return elementsAttributeValue;
+	}
+	
+	public int getSizeofListElement(By locator){
+		int sizeOfList = 0;
+		try {
+			sizeOfList = getDriver().findElements(locator).size();
+			if(UTReportFactory.getInstance().getExtent() != null)
+				UTReportFactory.getInstance().getExtent().log(Status.INFO, locator+"count of list element is" +sizeOfList);
+		} catch(Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+		return sizeOfList;
+	}
+	
+	public List<String> getTextofListElement(By locator) {
+		String text = null;
+		List<String> elementsText = new ArrayList<String>();
+		try {
+			List<WebElement> listElement = getDriver().findElements(locator);
+			for (WebElement webElement : listElement) {
+				text = webElement.getText();
+				elementsText.add(text);
+			}
+			UTReportFactory.getInstance().getExtent().log(Status.INFO,
+					"got the text of list element [ " + locator + " ]");
+		} catch (Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+		return elementsText;
+	}
 
+	public void scrollIntoViewElement(By locator) {
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor)getDriver();
+			executor.executeScript("arguments[0].scrollIntoView(true)", getDriver().findElement(locator));
+			UTReportFactory.getInstance().getExtent().log(Status.INFO, "Scroll in to view [" + locator + "] using javascript");
+		}catch(Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+	}
+	public void clickOnOptionFromList(By locator, String option) {
+		try {
+			List<WebElement> listElement = getDriver().findElements(locator);
+			for(WebElement webElement : listElement) {
+				String text = webElement.getText();
+				if(text.equals(option)) {
+					webElement.click();
+					UTReportFactory.getInstance().getExtent().log(Status.INFO, 
+							"Clicked on the option [" + option + "] from the list");
+				}
+			}
+		} catch(Exception exc) {
+			TestBase.captureScreenshot(exc.toString());
+		}
+	}
+	
 }

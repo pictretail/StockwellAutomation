@@ -6,8 +6,8 @@ public class Constants {
 		public static final String FIREFOX = "firefox";
 		public static final String EDGE = "edge";
 		public static final String STAGING = "staging";
-		public static final String DELIMITER_COLON = ":";
-		public static final String DELIMITER_HASH = "#";
+		//public static final String DELIMITER_COLON = ":";
+		//public static final String DELIMITER_HASH = "#";
 		public static final String EMPTY_STRING = "";
 		public static final String TIME_STAMP = "dd_MM_yy_hh_mm_ss_aa";
 		public static final String TIME_ZONE_INDIA = "Asia/Kolkata";
@@ -28,5 +28,10 @@ public class Constants {
 		public static final int THREE_SECOND = 3;
 		public static final int TWO_SECOND = 2;
 		public static final int SHORT_TIME = 5;
+		public static final String METRO = "365 Retail Markets";
+		public static final String SUBMETRO = "Campbell Office";
+		public static final String TRANSACTIONREVIEWTOOL = "TransactionReviewTool";
+		public static final String VIDEOSTATUS = "Video Status";
+		
 		
 }

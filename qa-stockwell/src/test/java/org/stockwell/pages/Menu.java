@@ -1,10 +1,11 @@
 package org.stockwell.pages;
 
 import org.openqa.selenium.By;
+import org.stockwell.keys.Constants;
 
 public class Menu {
 	
-	public static final By BTN_Hamburger = By.xpath("//button[@aria-label='Side Nav']");
+	public static final By BTN_HAMBURGER = By.xpath("//button[@aria-label='Side Nav']");
 	public static final By MI_DASHBOARD = By.xpath("//p[text()='Dashboard']");
 	public static final By MI_SEARCHTOOL = By.xpath("//p[text()='Search Tool']");
 	public static final By MI_STOCKWELLS = By.xpath("//p[text()='Stockwells']");
@@ -28,6 +29,10 @@ public class Menu {
 	public static final By MI_PERMISSIONGROUPS = By.xpath("//p[text()='Permission Groups']");
 	public static final By MI_SIGNOUT = By.xpath("//p[text()='Sign Out']");
 	public static final By BTN_METRODROPDOWN = By.xpath("//button[@aria-label='Metro']//*[local-name()='svg'][2]");
+	public static final By BTN_EXPANDMORE = By.xpath("//*[local-name()='svg' and @data-testid='ExpandMoreIcon']");
+	public static final By LST_METROOPTIONS = By.xpath("//ul[@role='menu']//li");
+	public static final By LST_METRO = By.xpath("//ul[@role='menu']//p[text()='"+Constants.METRO+"']");
+	public static final By LST_SUBMETRO = By.xpath("//ul[@role='menu']//li[text()='"+Constants.SUBMETRO+"']");
 	
 
 }

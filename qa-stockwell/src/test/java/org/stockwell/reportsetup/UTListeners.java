@@ -22,6 +22,7 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
  
@@ -37,6 +38,8 @@ public class UTListeners implements ITestListener {
 	public static int skippedCount;
 	HashMap<String,Integer> resultset1 = new HashMap<>();
 	HashMap<String,Integer> resultset2 = new HashMap<>();
+	HashMap<String,Integer> resultset3 = new HashMap<>();
+	HashMap<String,Integer> resultset4 = new HashMap<>();
 	public static List<String> classNames = new ArrayList<String>();
 	public static List<Map<String, Integer>> listResultSet = new ArrayList<Map<String, Integer>>();
 	public static List<Map<String, Integer>> listResultSetFinal = new ArrayList<Map<String, Integer>>();
@@ -49,10 +52,10 @@ public class UTListeners implements ITestListener {
  
 	
 	  public void onTestSuccess(ITestResult result) {
-		//TestInfra.capturePassedScreenshot();
-	    UTReportFactory.getInstance().getExtent().log(Status.PASS, " method [" +result.getMethod().getMethodName() + "] is passed"); 
-		UTReportFactory.getInstance().getExtent().addScreenCaptureFromBase64String(TestBase.captureScreenShotAsBase64());
-		
+		  UTReportFactory.getInstance().getExtent().log(Status.PASS, " method [" +result.getMethod().getMethodName() + "] is passed"); 
+			//UTReportFactory.getInstance().getExtent().addScreenCaptureFromPath(TestBase.capturePassedScreenshot());
+			
+		   // UTReportFactory.getInstance().removeExtentObject();
 		if(TestBase.updateTestRail.toLowerCase().equals(Constants.YES.toLowerCase())){ 
 	    ArrayList<String> testCaseIdsList = getTestCaseIdsFromDescription(result.getMethod().getDescription()); 
 	    for(String testId : testCaseIdsList) {
@@ -96,16 +99,12 @@ public class UTListeners implements ITestListener {
 				
 		// get screenshot
 		try {
-			String screenshot = null;
 			String linesofExc[] = result.getThrowable().toString().split("\\r?\\n");
 			if (!linesofExc[0].contains(TestBase.THROWABLE_EXCEPTION)) {
-				UTReportFactory.getInstance().getExtent().log(Status.FAIL, linesofExc[0]);
-				screenshot = objReportName.getScreenshot(WebDriverFactory.getDriver());
-				//ExtFactory.getInstance().getExtent().addScreenCaptureFromPath(screenshot);
-				UTReportFactory.getInstance().getExtent().addScreenCaptureFromBase64String(TestBase.captureScreenShotAsBase64());
+				UTReportFactory.getInstance().getExtent().log(Status.FAIL, linesofExc[0],
+						MediaEntityBuilder.createScreenCaptureFromBase64String(TestBase.captureScreenShotAsBase64()).build());
 			}
-			UTReportFactory.getInstance().getExtent().log(Status.FAIL, "Test Case is failed");
-			UTReportFactory.getInstance().removeExtentObject();
+			//UTReportFactory.getInstance().removeExtentObject();
  
 		} catch (Exception exc) {
 			exc.printStackTrace();
@@ -116,7 +115,8 @@ public class UTListeners implements ITestListener {
 	public void onTestSkipped(ITestResult result) {
 		UTReportFactory.getInstance().getExtent().log(Status.SKIP,
 				"Test Case" + result.getMethod().getMethodName() + "is skipped due to " + result.getThrowable());
-		UTReportFactory.getInstance().removeExtentObject();
+		UTReportFactory.getInstance().getExtent().addScreenCaptureFromBase64String(TestBase.captureScreenShotAsBase64());
+		//UTReportFactory.getInstance().removeExtentObject();
 		skippedCount++;
 		int index = classNames.indexOf(result.getMethod().getRealClass().getSimpleName());
 		updateCount(listResultSet.get(index), Constants.SKIP, result.getMethod().getRealClass().getSimpleName());
@@ -126,7 +126,7 @@ public class UTListeners implements ITestListener {
 		try {
 			objReportName = new UTReport("Stockwell Test Automation", "Stockwell Test Results");
 			objReport = objReportName.getReporter();
-			listResultSet = Arrays.asList(resultset1,resultset2);
+			listResultSet = Arrays.asList(resultset1,resultset2,resultset3,resultset4);
 			List<ITestNGMethod> methods = context.getSuite().getAllMethods();
 			Set<String> classNamesHash = new HashSet<>();
 			for (ITestNGMethod method : methods) {

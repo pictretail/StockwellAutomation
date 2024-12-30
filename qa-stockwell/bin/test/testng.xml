@@ -3,14 +3,16 @@
 <suite name="Suite" parallel="methods" thread-count="1">
 	<parameter name="executionenvironment" value="staging" />
 	<parameter name="UpdateTestRail" value="no" />
-	<parameter name="environment" value="local"></parameter>
+	<parameter name="environment" value="local"/>
 	<parameter name="browser" value="chrome"/>
 	
 	<test name="Test">
 		<classes>
-			<class name="org.stockwell.tests.LoginTest">
+			<class name="org.stockwell.tests.TransactionReviewToolTest">
 				<methods>
-					<include name="verifyLoginPageAsSuperUser"/>
+					<include name="VerifyAllTransactionsFields"/>
+					<include name="VerifyAllTransactionsVideoStatus"/>
+					<include name="VerifyGrabTransaction"/>
 				</methods>
 			</class>
 		</classes>
