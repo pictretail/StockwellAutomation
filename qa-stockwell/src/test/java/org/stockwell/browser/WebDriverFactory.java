@@ -78,7 +78,7 @@ public class WebDriverFactory {
     private static ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments(getBrowserOptions());
-       // options.addArguments("--headless");
+        options.addArguments("--headless");
         options.addArguments("--no-sandbox");
         options.addArguments("enable-automation");
         options.addArguments("--disable-gpu");
