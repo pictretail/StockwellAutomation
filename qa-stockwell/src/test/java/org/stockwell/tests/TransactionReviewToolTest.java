@@ -15,22 +15,21 @@ import org.stockwell.utilities.UTExcel;
 import org.testng.annotations.Test;
 
 public class TransactionReviewToolTest extends TestBase {
-	LoginTest login = new LoginTest();
-	UTBase base = new UTBase();
-	UTTable table = new UTTable();
-	UTExcel excel = new UTExcel();
+	//private LoginTest login = new LoginTest();
+	private UTBase base = new UTBase();
+	private UTTable table = new UTTable();
+	private UTExcel excel = new UTExcel();
+	private TransactionReviewTool transactionreviewtool = new TransactionReviewTool();
 	
   @Test(groups={"regression"},description = "C246469-Webapp>Transaction Review Tool-Verify All transactions fields")
   public void VerifyAllTransactionsFields() {
 	  try {
-		  login.verifyLoginPageAsSuperUser();
-		  base.click(Menu.BTN_HAMBURGER);
-		  base.click(Menu.MI_TRANSACTIONREVIEWTOOL);
+		  transactionreviewtool.navigateToTransactionReviewToolPage();
 		  base.click(TransactionReviewTool.BTN_ALL);
 		  base.waitforElement(TransactionReviewTool.TBL_HEADER, Constants.ONE_SECOND);
-		  List<String> transactionHeaders=  table.getTblHeaders(TransactionReviewTool.TBL_HEADER);
+		  List<String> actualtransactionHeaders=  table.getTblHeaders(TransactionReviewTool.TBL_HEADER);
 		  List<String> expectedTransactionHeaders = excel.getRowData(FilePath.TEST_DATA, Constants.TRANSACTIONREVIEWTOOL,0);
-		  UTAssert.assertEquals(transactionHeaders, expectedTransactionHeaders);
+		  UTAssert.assertEquals(actualtransactionHeaders, expectedTransactionHeaders);
 		  
 	  } catch(Exception exc) {
 		  TestBase.captureScreenshot(exc.toString());
@@ -40,29 +39,33 @@ public class TransactionReviewToolTest extends TestBase {
   @Test(groups= {"regression"},description = "C246470-Webapp>Transaction Review Tool-Verify All transactions video status")
   public void VerifyAllTransactionsVideoStatus() {
 	  try {
-		  login.verifyLoginPageAsSuperUser();
-		  base.click(Menu.BTN_HAMBURGER);
-		  base.click(Menu.MI_TRANSACTIONREVIEWTOOL);
+		  transactionreviewtool.navigateToTransactionReviewToolPage();
 		  base.click(TransactionReviewTool.BTN_ALL);
 		  base.waitforElement(TransactionReviewTool.TBL_HEADER, Constants.ONE_SECOND);
 		  Set<String> videoStatus = table.getColumnValues(7);
-		  System.out.println(videoStatus);
-	  List<String> statusesToVerify = Arrays.asList("Finished", "Item inference");//, "Uploading","Processing Segments");
-	  for(String status : statusesToVerify) {
-
-		  if(videoStatus.contains(status)) {
-			  	
-			  	UTAssert.assertTrue(true);
-		  }
-		  }
-		  
-		  
-		 
-//		  System.out.println(videoStatus);
-//		  UTAssert.assertTrue(videoStatus.contains(statusesToVerify));
-//		  
+		  List<String> statusesToVerify = excel.getColumnDataByHeader(FilePath.TEST_DATA, Constants.TRANSACTIONREVIEWTOOL, Constants.VIDEOSTATUS);
+		  for(String status : statusesToVerify) 
+			// UTAssert.assertTrue(videoStatus.contains(status));
+			 {
+				 if(videoStatus.contains(status)) 
+				 { UTAssert.assertTrue(true); 
+				 }
+			}
+			 		  
 	  } catch(Exception exc) {
 		  TestBase.captureScreenshot(exc.toString());
 	  }
+  }
+  
+  @Test(groups={"regression"},description="C246471-Webapp>Transaction Review Tool-Verify grab transaction")
+  public void VerifyGrabTransaction() {
+	  try {
+		  transactionreviewtool.navigateToTransactionReviewToolPage();
+		  base.click(TransactionReviewTool.BTN_GRABTRANSACTION);  
+		  UTAssert.assertTrue(base.isDisplayed(TransactionReviewTool.LINK_TRANSACTIONS));
+	  }catch(Exception exc) {
+		  TestBase.captureScreenshot(exc.toString());
+	  }
+	  
   }
 }

@@ -31,6 +31,7 @@ public class Constants {
 		public static final String METRO = "365 Retail Markets";
 		public static final String SUBMETRO = "Campbell Office";
 		public static final String TRANSACTIONREVIEWTOOL = "TransactionReviewTool";
+		public static final String VIDEOSTATUS = "Video Status";
 		
 		
 }
